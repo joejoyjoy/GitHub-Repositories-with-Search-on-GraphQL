@@ -1,8 +1,11 @@
 import Routes from "./router/router"
+import UserAccessTokenProvider from "./context/UserAccessTokenContext"
 
 function App() {
   return (
-    <Routes />
+    <UserAccessTokenProvider>
+      <Routes />
+    </UserAccessTokenProvider>
   )
 }
 

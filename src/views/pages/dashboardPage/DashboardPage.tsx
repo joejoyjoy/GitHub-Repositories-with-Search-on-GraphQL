@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { UserAccessTokenContext } from "../../../context/UserAccessTokenContext";
 
 const DashboardPage = () => {
-  const [rerender, setRerender] = useState(false);
+  const { setAccessToken } = useContext(UserAccessTokenContext)
 
   return (
     <>
       <div>DashboardPage</div>
       <>
         <h3>You are logged in</h3>
-        <button onClick={() => { localStorage.removeItem("accessToken"); setRerender(!rerender) }}>
+        <button onClick={() => setAccessToken('')}>
           Log out
         </button>
         <h3>User Data</h3>
