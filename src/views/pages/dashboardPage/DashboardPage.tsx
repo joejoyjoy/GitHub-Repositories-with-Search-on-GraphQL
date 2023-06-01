@@ -1,20 +1,8 @@
-import { useContext } from "react";
-import { UserAccessTokenContext } from "../../../context/UserAccessTokenContext";
+import DashboardComponents from "../../components/dashboardComponents/DashboardComponents";
 
 const DashboardPage = () => {
-  const { setAccessToken } = useContext(UserAccessTokenContext)
-
   return (
-    <>
-      <div>DashboardPage</div>
-      <>
-        <h3>You are logged in</h3>
-        <button onClick={() => setAccessToken('')}>
-          Log out
-        </button>
-        <h3>User Data</h3>
-      </>
-    </>
+    <DashboardComponents />
   )
 }
 
