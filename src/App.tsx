@@ -1,8 +1,8 @@
+import Routes from "./router/router"
+
 function App() {
   return (
-    <>
-      <h1>Nice</h1>
-    </>
+    <Routes />
   )
 }
 
