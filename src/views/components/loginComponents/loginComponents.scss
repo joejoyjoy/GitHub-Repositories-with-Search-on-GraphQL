@@ -1,0 +1,84 @@
+@import '../../../sass/';
+
+.login-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100dvh;
+  gap: 1rem;
+  margin: 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    &--background {
+      position: relative;
+      width: 100vw;
+      height: 38vh;
+      max-height: 360px;
+      margin: 0;
+      overflow: hidden;
+      filter: drop-shadow(0 8px 3px #2e2d46);
+
+      &__position {
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--image {
+          aspect-ratio: 3 / 2;
+          width: 120vw;
+          height: 38vh;
+          max-height: 360px;
+          object-fit: cover;
+          border-bottom-left-radius: 50%;
+          border-bottom-right-radius: 50%;
+        }
+      }
+    }
+
+    &--description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: -webkit-fill-available;
+      max-width: 364px;
+      margin: 0 2rem;
+
+      h1 {
+        color: $color-primary;
+        font-size: 2rem;
+        margin: 0;
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: -webkit-fill-available;
+    max-width: 364px;
+    margin: 2rem;
+
+    &--login {
+      @include buttonWithText($color-main, $color-main-hover);
+    }
+
+    &--sign-up {
+      @include buttonWithText($background-color-secondary, $background-color-secondary-hover);
+    }
+  }
+}

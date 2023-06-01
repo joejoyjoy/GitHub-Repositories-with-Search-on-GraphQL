@@ -1,8 +1,11 @@
 import LoginComponents from "../../components/loginComponents"
+import './loginPage.scss'
 
 const LoginPage = () => {
   return (
-    <LoginComponents />
+    <main className="login-page">
+      <LoginComponents />
+    </main>
   )
 }
 

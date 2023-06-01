@@ -1,0 +1,20 @@
+@mixin buttonWithText($bg-color, $bg-color-hover) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $color-primary;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.8rem;
+  border: 0;
+  background-color: $bg-color;
+  border-radius: 1.4rem;
+  transition: background-color 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+}
