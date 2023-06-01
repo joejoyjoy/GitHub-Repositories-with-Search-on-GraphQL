@@ -1,10 +1,12 @@
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Navigate, Outlet } from 'react-router';
 import { UserAccessTokenContext } from "../context/UserAccessTokenContext";
+import { getUserGithubRepos } from "../api/graphqlRequests";
 const { VITE_SERVER_URL } = import.meta.env;
 
 export const DashboardRoute = () => {
   const { accessToken, setAccessToken } = useContext(UserAccessTokenContext)
+  const [userRepos, setUserRepos] = useState([])
 
   useEffect(() => {
     const getUserData = async () => {
@@ -16,15 +18,21 @@ export const DashboardRoute = () => {
         });
 
         const loggedUserData = await response.json();
-        console.log(loggedUserData);
+        const fetchRepos = await getUserGithubRepos(accessToken, loggedUserData.login);
+        setUserRepos(fetchRepos)
 
       } catch (err) {
         console.error(err);
       }
     }; getUserData();
-
   }, []);
 
+  if (Number(userRepos.length) === 0) {
+    console.log("NO INFO");
+  }
+
+  console.log(userRepos);
+  
   if (!accessToken) {
     return <Navigate to={'/'} />
   }
