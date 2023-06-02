@@ -1,0 +1,71 @@
+@import '../../../../sass/';
+
+.login-desktop-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100dvh;
+  width: 100vw;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 6rem;
+
+    &--description {
+      display: flex;
+      flex-direction: column;
+      margin: 0 2rem;
+
+      h1 {
+        color: $color-primary;
+        font-size: 2rem;
+        margin: 0;
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      width: -webkit-fill-available;
+      max-width: 220px;
+      margin: 2rem;
+
+      &__login {
+        @include buttonWithText($color-main, $color-main-hover);
+      }
+
+      &__sign-up {
+        @include buttonWithText($background-color-secondary, $background-color-secondary-hover);
+      }
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 45vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    filter: drop-shadow(0 8px 3px #2e2d46);
+
+    &--position {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__image {
+        width: 45vw;
+        height: 120vh;
+        object-fit: cover;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+      }
+    }
+  }
+}
