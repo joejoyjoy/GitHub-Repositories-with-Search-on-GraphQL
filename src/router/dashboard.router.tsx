@@ -25,7 +25,7 @@ export const DashboardRoute = () => {
 
         const loggedUserData = await response.json();
 
-        const fetchRepos = await getUserGithubRepos(accessToken, loggedUserData.login);
+        const fetchRepos = await getUserGithubRepos(accessToken, loggedUserData.login, "CREATED_AT", "DESC");
         setUserRepos(fetchRepos)
 
 

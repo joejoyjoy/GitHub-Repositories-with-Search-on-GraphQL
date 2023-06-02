@@ -30,6 +30,9 @@ export async function getUserDetails(accessToken: string) {
             issues {
               totalCount
             }
+            repositories(privacy: PUBLIC) {
+              totalCount
+            }
           }
         }`
       })
@@ -43,7 +46,7 @@ export async function getUserDetails(accessToken: string) {
   }
 }
 
-export async function getUserGithubRepos(accessToken: string, login: string) {
+export async function getUserGithubRepos(accessToken: string, login: string, field: string, direction: string) {
   try {
     const response = await fetch(`https://api.github.com/graphql`, {
       method: 'POST',
@@ -79,7 +82,7 @@ export async function getUserGithubRepos(accessToken: string, login: string) {
       body: JSON.stringify({
         "query": `{
           user(login: "${login}") {
-            repositories(first: ${totalCount}, orderBy: {field: CREATED_AT, direction: DESC}) {
+            repositories(first: ${totalCount}, orderBy: {field: ${field}, direction: ${direction}}) {
               totalCount
               nodes {
                 name

@@ -1,1 +1,54 @@
 @import '../../../../sass/';
+
+.settings-component {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.8rem 0;
+
+  &__results {
+    color: $color-info;
+  }
+
+  &__settings {
+    display: flex;
+    gap: 0.6rem;
+
+    &--wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      background: none;
+      cursor: pointer;
+
+      svg {
+        color: $color-primary;
+        width: 0.7rem;
+        height: 0.7rem;
+        transform: rotate(180deg);
+        transition: transform 0.4s;
+      }
+
+      p {
+        color: $color-primary;
+        margin: 0;
+      }
+
+      .selected {
+        transform: rotate(0deg);
+      }
+    }
+
+    .active {
+      background-color: $color-main;
+      cursor: pointer;
+      transition: background-color 0.4s;
+
+      &:hover {
+        background-color: $color-main-hover;
+      }
+    }
+  }
+}
