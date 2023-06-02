@@ -2,12 +2,16 @@ $color-primary: #FFF;
 $color-secondary: #a2a2ad;
 $color-main: #FD744C;
 $color-main-hover: #ff916f;
+$color-info: rgba($color-primary, 0.3);
 
 /* BACKGROUND COLORS */
 $background-color-primary: #16122A;
 $background-color-secondary: rgba($color-primary, 0.035);
 $background-color-main: rgba($color-primary, 0.08);
 $background-color-main-hover: rgba($color-primary, 0.12);
+
+/* HR CSS CONFIG */
+$hr-config: 1px solid rgba($color-primary, 0.15);
 
 /* MEDIA QUERIES */
 $media-breakpoint-desktop-mobile: 750px

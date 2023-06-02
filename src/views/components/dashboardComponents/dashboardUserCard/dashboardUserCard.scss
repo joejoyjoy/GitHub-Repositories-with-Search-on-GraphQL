@@ -76,7 +76,7 @@
         }
 
         hr {
-          border: 1px solid rgba($color-primary, 0.15);
+          border: $hr-config;
         }
       }
     }
@@ -84,7 +84,7 @@
     &--hr {
       width: 100%;
       margin: 0;
-      border: 1px solid rgba($color-primary, 0.15);
+      border: $hr-config;
     }
 
     &--logout {

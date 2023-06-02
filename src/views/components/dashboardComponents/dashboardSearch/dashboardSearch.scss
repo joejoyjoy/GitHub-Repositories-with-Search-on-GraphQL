@@ -1,1 +1,36 @@
 @import '../../../../sass/';
+
+.search-component {
+  position: relative;
+  display: flex;
+
+  &__search {
+    color: $color-primary;
+    padding-right: 1.8rem;
+    padding-left: 4.8rem;
+    height: 3.6rem;
+    width: 100%;
+    border: 0;
+    border-radius: 1.8rem;
+    background-color: rgba($color-primary, 0.08);
+    
+    &::placeholder {
+      color: $color-info;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 0;
+    left: 1.4rem;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+
+    svg {
+      color: $color-info;
+      width: 2.2rem;
+      height: 2.2rem;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
-import nFormatter from "../../../../utils/nFormatter";
 import ProfilePlaceholder from '../../../../assets/profile-placeholder-160x160.webp'
 import './dashboardSocialSidebar.scss'
 
@@ -11,8 +10,6 @@ const DashboardSocialSidebar = () => {
   if ((userDetails.length) === 0) {
     console.log("NO INFO");
   }
-
-  console.log(nFormatter(4472543));
 
   return (
     <section className="social-sidebar-component">

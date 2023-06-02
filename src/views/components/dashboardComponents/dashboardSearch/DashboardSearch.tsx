@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserReposDataContext } from "../../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
-import nFormatter from "../../../../utils/nFormatter";
+import { CiSearch } from 'react-icons/ci';
 import './dashboardSearch.scss'
 
 const DashboardSearch = () => {
@@ -15,9 +15,14 @@ const DashboardSearch = () => {
   console.log(userDetails);
   console.log(userRepos);
 
-  console.log(nFormatter(4472543));
-
-  return <input type="search" />
+  return (
+    <section className="search-component">
+      <div className="search-component__icon">
+        <CiSearch  />
+      </div>
+      <input type="text" className="search-component__search" placeholder="Search..." />
+    </section>
+  )
 
   return (
     <div>

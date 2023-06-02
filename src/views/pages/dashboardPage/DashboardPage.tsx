@@ -10,11 +10,11 @@ const DashboardPage = () => {
     <main className="dashboard-page">
       <div className="dashboard-page__wrapper">
         <DashboardUserCard />
-        <section>
+        <div>
           <DashboardSearch />
           <DashboardSettings />
           <DashboardRepos />
-        </section>
+        </div>
         <DashboardSocialSidebar />
       </div>
     </main>
