@@ -1,0 +1,62 @@
+@import '../../../../sass/';
+
+.social-sidebar-component {
+  &__header {
+    margin-bottom: 1rem;
+
+    h3 {
+      color: rgba($color-primary, 0.4);
+      font-size: 13px;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    &--wrapper {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+
+      &__avatar {
+        margin-right: 1.4rem;
+
+        img {
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+
+      &__component {
+        h4 {
+          color: $color-primary;
+          font-size: 17px;
+          font-weight: 400;
+          margin: 0;
+          margin-bottom: 0.3rem;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 164px;
+          height: 21px;
+          white-space: nowrap;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 300;
+          margin: 0;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 164px;
+          height: 17px;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}

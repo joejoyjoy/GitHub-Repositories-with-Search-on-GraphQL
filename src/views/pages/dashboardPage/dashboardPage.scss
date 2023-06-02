@@ -1,0 +1,14 @@
+.dashboard-page {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    grid-gap: 3rem;
+    margin: 2rem;
+    max-width: 1536px;
+    margin-bottom: 0;
+  }
+}

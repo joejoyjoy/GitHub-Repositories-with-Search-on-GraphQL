@@ -5,8 +5,9 @@ $color-main-hover: #ff916f;
 
 /* BACKGROUND COLORS */
 $background-color-primary: #16122A;
-$background-color-secondary: rgba($color-primary, 0.08);
-$background-color-secondary-hover: rgba($color-primary, 0.12);
+$background-color-secondary: rgba($color-primary, 0.035);
+$background-color-main: rgba($color-primary, 0.08);
+$background-color-main-hover: rgba($color-primary, 0.12);
 
 /* MEDIA QUERIES */
 $media-breakpoint-desktop-mobile: 750px

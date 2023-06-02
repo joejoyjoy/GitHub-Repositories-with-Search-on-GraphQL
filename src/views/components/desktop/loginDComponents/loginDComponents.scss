@@ -38,7 +38,7 @@
       }
 
       &__sign-up {
-        @include buttonWithText($background-color-secondary, $background-color-secondary-hover);
+        @include buttonWithText($background-color-main, $background-color-main-hover);
       }
     }
   }

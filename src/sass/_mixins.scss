@@ -4,7 +4,6 @@
   align-items: center;
   text-decoration: none;
   color: $color-primary;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 14px;
   padding: 0.8rem;
@@ -16,5 +15,22 @@
 
   &:hover {
     background-color: $bg-color-hover;
+  }
+}
+
+@mixin simpleButton() {
+  color: $color-main;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0.9rem 0;
+  margin-bottom: 1.2rem;
+  border: 0;
+  background: none;
+  transition: color 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-main-hover;
   }
 }

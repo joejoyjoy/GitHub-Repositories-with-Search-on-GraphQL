@@ -1,3 +1,48 @@
+export async function getUserDetails(accessToken: string) {
+  try {
+    const response = await fetch(`https://api.github.com/graphql`, {
+      method: 'POST',
+      headers: {
+        "Authorization": `Bearer ${accessToken}`,
+        "Content-Type": "Application/json"
+      },
+      body: JSON.stringify({
+        "query": `{
+          viewer {
+            id
+            login
+            avatarUrl
+            name
+            url
+            followers(first: 4) {
+              totalCount
+              nodes {
+                avatarUrl
+                id
+                name
+                login
+                url
+              }
+            }
+            following {
+              totalCount
+            }
+            issues {
+              totalCount
+            }
+          }
+        }`
+      })
+    });
+
+    const graphQLData = await response.json();
+    return graphQLData.data.viewer;
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export async function getUserGithubRepos(accessToken: string, login: string) {
   try {
     const response = await fetch(`https://api.github.com/graphql`, {
@@ -39,6 +84,7 @@ export async function getUserGithubRepos(accessToken: string, login: string) {
               nodes {
                 name
                 url
+                id
                 owner {
                   id
                   avatarUrl
