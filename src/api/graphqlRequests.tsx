@@ -14,7 +14,10 @@ export async function getUserDetails(accessToken: string) {
             avatarUrl
             name
             url
-            followers(first: 4) {
+            followers {
+              totalCount
+            }
+            following(first: 7) {
               totalCount
               nodes {
                 avatarUrl
@@ -23,9 +26,6 @@ export async function getUserDetails(accessToken: string) {
                 login
                 url
               }
-            }
-            following {
-              totalCount
             }
             issues {
               totalCount
