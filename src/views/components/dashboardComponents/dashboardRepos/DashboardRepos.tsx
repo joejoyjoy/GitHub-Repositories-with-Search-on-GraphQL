@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { UserReposDataContext } from "../../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../../context/SearchUserReposContext";
@@ -11,6 +12,7 @@ const DashboardRepos = () => {
   const { userRepos } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
+  const [listRef] = useAutoAnimate();
 
   const searchReposResult = userRepos.filter((p: any) =>
     p.name.toString().toLowerCase().includes(keyword.toLowerCase())
@@ -42,7 +44,7 @@ const DashboardRepos = () => {
   console.log(nFormatter(4472543));
 
   return (
-    <section className="user-repos-component">
+    <section className="user-repos-component" ref={listRef} >
       {userRepos &&
         searchReposResult?.map((repo: any) => {
           const { id, name, owner, url, createdAt } = repo
