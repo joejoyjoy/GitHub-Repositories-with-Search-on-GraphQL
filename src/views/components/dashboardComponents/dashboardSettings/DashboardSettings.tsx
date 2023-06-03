@@ -75,7 +75,7 @@ const DashboardSettings = () => {
 
   return (
     <section className="settings-component">
-      <span className="settings-component__results">{repositories ? nFormatter(repositories?.totalCount) : "NONE"} REPOS</span>
+      <span className="settings-component__results">{repositories?.totalCount ? nFormatter(repositories.totalCount) : "NONE"} REPOS</span>
       <div className="settings-component__settings">
         <span onClick={handleNameSort} className={`settings-component__settings--wrapper${current === "NAME" ? " active" : ""}`}>
           <BsTriangleFill className={current === "NAME" && direction === "DESC" ? " selected" : ""} />

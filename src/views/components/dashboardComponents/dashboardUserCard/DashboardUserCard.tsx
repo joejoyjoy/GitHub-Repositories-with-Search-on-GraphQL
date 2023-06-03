@@ -8,30 +8,30 @@ import './dashboardUserCard.scss'
 const DashboardUserCard = () => {
   const { setAccessToken } = useContext(UserAccessTokenContext)
   const { userDetails } = useContext(UserDetailsContext)
-  const { avatarUrl, name, login, url} = userDetails
+  const { avatarUrl, name, login, url, issues, followers, following} = userDetails
 
   return (
     <section className="user-card-component">
-      <img src={userDetails ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-card-component__avatar"/>
+      <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-card-component__avatar"/>
       <div className="user-card-component__wrapper">
         <div className="user-card-component__wrapper--component">
-          <a href={userDetails ? url : "#"} className="user-card-component__wrapper--component__user">
-            <h3>{userDetails ? name : "User Name"}</h3>
-            <p>github.com/{userDetails ? login : "accountname"}</p>
+          <a href={url ? url : "#"} className="user-card-component__wrapper--component__user">
+            <h3>{name ? name : "User Name"}</h3>
+            <p>github.com/{login ? login : "accountname"}</p>
           </a>
           <div className="user-card-component__wrapper--component__statistics">
             <div className="user-card-component__wrapper--component__statistics--details">
-              <h4>{userDetails ? nFormatter(userDetails.issues?.totalCount) : "none"}</h4>
+              <h4>{issues?.totalCount ? nFormatter(issues.totalCount) : "none"}</h4>
               <p>Issues</p>
             </div>
             <hr />
             <div className="user-card-component__wrapper--component__statistics--details">
-              <h4>{userDetails ? nFormatter(userDetails.followers?.totalCount) : "none"}</h4>
+              <h4>{followers?.totalCount ? nFormatter(followers.totalCount) : "none"}</h4>
               <p>followers</p>
             </div>
             <hr />
             <div className="user-card-component__wrapper--component__statistics--details">
-              <h4>{userDetails ? nFormatter(userDetails.following?.totalCount) : "none"}</h4>
+              <h4>{following?.totalCount ? nFormatter(following.totalCount) : "none"}</h4>
               <p>following</p>
             </div>
           </div>

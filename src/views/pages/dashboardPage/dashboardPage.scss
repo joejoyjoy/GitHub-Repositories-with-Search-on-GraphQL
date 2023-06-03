@@ -8,5 +8,15 @@
     padding: 2rem;
     margin: 0 auto;
     max-width: 1536px;
+
+    @media (max-width: 1200px) {
+      grid-template-columns: 220px 1fr;
+
+      &--user {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
   }
 }

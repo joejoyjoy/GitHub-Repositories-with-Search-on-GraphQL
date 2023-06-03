@@ -23,11 +23,11 @@ const DashboardSocialSidebar = () => {
             return (
               <div key={id} className="social-sidebar-component__grid--wrapper">
                 <div className="social-sidebar-component__grid--wrapper__avatar">
-                  <img src={follower ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" />
+                  <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" />
                 </div>
-                <a href={follower ? url : "#"} className="social-sidebar-component__grid--wrapper__component">
-                  <h4>{follower ? name : "User Name"}</h4>
-                  <p>{follower ? login : "accountname"}</p>
+                <a href={url ? url : "#"} className="social-sidebar-component__grid--wrapper__component">
+                  <h4>{name ? name : "Unknown"}</h4>
+                  <p>{login ? login : "unknownaccount"}</p>
                 </a>
               </div>
             )

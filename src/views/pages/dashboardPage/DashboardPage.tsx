@@ -3,19 +3,31 @@ import DashboardSocialSidebar from "../../components/dashboardComponents/dashboa
 import DashboardSearch from "../../components/dashboardComponents/dashboardSearch";
 import DashboardSettings from "../../components/dashboardComponents/dashboardSettings/DashboardSettings";
 import DashboardRepos from "../../components/dashboardComponents/dashboardRepos/DashboardRepos";
+import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import './dashboardPage.scss'
 
 const DashboardPage = () => {
+  const [screenWidth] = useWindowSizeReport();
+
   return (
     <main className="dashboard-page">
       <div className="dashboard-page__wrapper">
-        <DashboardUserCard />
+        {screenWidth > 1200 ?
+          <DashboardUserCard />
+          :
+          <div className="dashboard-page__wrapper--user">
+            <DashboardUserCard />
+            <DashboardSocialSidebar />
+          </div>
+        }
         <div>
           <DashboardSearch />
           <DashboardSettings />
           <DashboardRepos />
         </div>
-        <DashboardSocialSidebar />
+        {screenWidth > 1200 &&
+          <DashboardSocialSidebar />
+        }
       </div>
     </main>
   )
