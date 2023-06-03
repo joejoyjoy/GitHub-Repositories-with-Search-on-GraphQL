@@ -1,8 +1,8 @@
-import DashboardUserCard from "../../components/dashboardComponents/dashboardUserCard";
-import DashboardSocialSidebar from "../../components/dashboardComponents/dashboardSocialSidebar";
-import DashboardSearch from "../../components/dashboardComponents/dashboardSearch";
-import DashboardSettings from "../../components/dashboardComponents/dashboardSettings/DashboardSettings";
-import DashboardRepos from "../../components/dashboardComponents/dashboardRepos/DashboardRepos";
+import DashboardDesktopUserCard from "../../components/desktop/dashboardDUserCard";
+import DashboardSocialSidebar from "../../components/dashboardSocialSidebar";
+import DashboardSearch from "../../components/dashboardSearch";
+import DashboardSettings from "../../components/dashboardSettings";
+import DashboardRepos from "../../components/dashboardRepos";
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import './dashboardPage.scss'
 
@@ -13,10 +13,10 @@ const DashboardPage = () => {
     <main className="dashboard-page">
       <div className="dashboard-page__wrapper">
         {screenWidth > 1200 ?
-          <DashboardUserCard />
+          <DashboardDesktopUserCard />
           :
           <div className="dashboard-page__wrapper--user">
-            <DashboardUserCard />
+            <DashboardDesktopUserCard />
             <DashboardSocialSidebar />
           </div>
         }

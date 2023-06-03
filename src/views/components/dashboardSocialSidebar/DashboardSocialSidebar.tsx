@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { UserDetailsContext } from "../../../../context/UserDetailsContext";
-import ProfilePlaceholder from '../../../../assets/profile-placeholder-160x160.webp'
+import { UserDetailsContext } from "../../../context/UserDetailsContext";
+import ProfilePlaceholder from '../../../assets/profile-placeholder-160x160.webp'
 import './dashboardSocialSidebar.scss'
 
 const DashboardSocialSidebar = () => {

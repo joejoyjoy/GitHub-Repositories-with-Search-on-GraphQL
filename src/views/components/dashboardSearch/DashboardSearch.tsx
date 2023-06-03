@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SearchUserReposContext } from "../../../../context/SearchUserReposContext";
+import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
 import { CiSearch } from 'react-icons/ci';
 import './dashboardSearch.scss'
 

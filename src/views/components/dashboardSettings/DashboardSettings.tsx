@@ -1,9 +1,9 @@
 import { useState, useContext } from "react";
-import { UserAccessTokenContext } from "../../../../context/UserAccessTokenContext";
-import { UserReposDataContext } from "../../../../context/UserReposDataContext";
-import { UserDetailsContext } from "../../../../context/UserDetailsContext";
-import { getUserGithubRepos } from "../../../../api/graphqlRequests";
-import nFormatter from "../../../../utils/nFormatter";
+import { UserAccessTokenContext } from "../../../context/UserAccessTokenContext";
+import { UserReposDataContext } from "../../../context/UserReposDataContext";
+import { UserDetailsContext } from "../../../context/UserDetailsContext";
+import { getUserGithubRepos } from "../../../api/graphqlRequests";
+import nFormatter from "../../../utils/nFormatter";
 import { BsTriangleFill } from 'react-icons/bs'
 import './dashboardSettings.scss'
 

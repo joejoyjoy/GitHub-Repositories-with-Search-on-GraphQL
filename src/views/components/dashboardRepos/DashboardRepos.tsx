@@ -2,10 +2,10 @@ import { useContext, useRef } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { UserReposDataContext } from "../../../../context/UserReposDataContext";
-import { UserDetailsContext } from "../../../../context/UserDetailsContext";
-import { SearchUserReposContext } from "../../../../context/SearchUserReposContext";
-import nFormatter from "../../../../utils/nFormatter";
+import { UserReposDataContext } from "../../../context/UserReposDataContext";
+import { UserDetailsContext } from "../../../context/UserDetailsContext";
+import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
+import nFormatter from "../../../utils/nFormatter";
 import './dashboardRepos.scss'
 
 const DashboardRepos = () => {

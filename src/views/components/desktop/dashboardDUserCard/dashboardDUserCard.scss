@@ -1,0 +1,94 @@
+@import '../../../../sass/';
+
+.user-desktop-card-component {
+  border-radius: 1.8rem;
+  background-color: $background-color-secondary;
+  height: fit-content;
+
+  &__avatar {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-top-left-radius: 1.8rem;
+    border-top-right-radius: 1.8rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+
+    &--component {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 1.6rem 0;
+
+      &__user {
+        text-decoration: none;
+
+        h3 {
+          color: $color-primary;
+          font-size: 19px;
+          font-weight: 500;
+          margin: 0;
+          text-align: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 192px;
+          height: 24px;
+          white-space: nowrap;
+        }
+
+        p {
+          color: $color-secondary;
+          font-size: 11px;
+          font-weight: 300;
+          margin: 0.08rem 0;
+          text-align: center;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          width: 192px;
+          height: 13px;
+          white-space: nowrap;
+        }
+      }
+
+      &__statistics {
+        display: flex;
+
+        &--details {
+          h4 {
+            color: $color-primary;
+            font-size: 17px;
+            font-weight: 500;
+            margin: 0;
+            margin-bottom: 0.2rem;
+            text-align: center;
+          }
+
+          p {
+            font-size: 11px;
+            font-weight: 300;
+            margin: 0;
+            text-align: center;
+          }
+        }
+
+        hr {
+          border: $hr-config;
+        }
+      }
+    }
+
+    &--hr {
+      width: 100%;
+      margin: 0;
+      border: $hr-config;
+    }
+
+    &--logout {
+      @include simpleButton();
+    }
+  }
+}

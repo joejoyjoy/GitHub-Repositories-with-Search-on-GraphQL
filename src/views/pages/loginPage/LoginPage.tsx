@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
 import useWindowSizeReport from '../../../hooks/useWindowSizeReport';
 import { responsiveBreak } from '../../../utils/componentsConstants';
-import LoginMComponents from '../../components/mobile'
-import LoginDComponents from '../../components/desktop'
+import LoginMComponents from '../../components/mobile/loginMComponents';
+import LoginDComponents from '../../components/desktop/loginDComponents'
 import './loginPage.scss'
 
 const LoginPage = () => {
