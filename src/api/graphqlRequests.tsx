@@ -17,7 +17,7 @@ export async function getUserDetails(accessToken: string) {
             followers {
               totalCount
             }
-            following(first: 7) {
+            following(first: 9) {
               totalCount
               nodes {
                 avatarUrl
@@ -85,9 +85,10 @@ export async function getUserGithubRepos(accessToken: string, login: string, fie
             repositories(first: ${totalCount}, orderBy: {field: ${field}, direction: ${direction}}) {
               totalCount
               nodes {
+                id
                 name
                 url
-                id
+                createdAt
                 owner {
                   id
                   avatarUrl
@@ -98,6 +99,21 @@ export async function getUserGithubRepos(accessToken: string, login: string, fie
                   nodes {
                     color
                     name
+                  }
+                }
+                upCase: object(expression: "master:README.md") {
+                  ... on Blob {
+                    text
+                  }
+                }
+                object(expression: "main:README.md") {
+                  ... on Blob {
+                    text
+                  }
+                }
+                otherFile: object(expression: "master:readme.md") {
+                  ... on Blob {
+                    text
                   }
                 }
               }

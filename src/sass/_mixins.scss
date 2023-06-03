@@ -19,7 +19,7 @@
 }
 
 @mixin simpleButton() {
-  color: $color-main;
+  color: $color-main-hover;
   font-size: 14px;
   font-weight: 400;
   text-align: center;
@@ -31,6 +31,6 @@
   cursor: pointer;
 
   &:hover {
-    color: $color-main-hover;
+    color: $color-main;
   }
 }

@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import ReactMarkdown from 'react-markdown';
+import moment from "moment";
 import { UserReposDataContext } from "../../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../../context/SearchUserReposContext";
@@ -14,6 +16,22 @@ const DashboardRepos = () => {
     p.name.toString().toLowerCase().includes(keyword.toLowerCase())
   );
 
+  const repoReadme = (repo: any) => {
+    if (repo.object !== null) {
+      const readme = repo.object?.text.replace(/<!--[\s\S]*?-->/g, '');
+      return readme.replace(/<img\b[^>]*>/g, '');
+    }
+    if (repo.otherFile !== null) {
+      const readme = repo.otherFile?.text.replace(/<!--[\s\S]*?-->/g, '');
+      return readme.replace(/<img\b[^>]*>/g, '');
+    }
+    if (repo.upCase !== null) {
+      const readme = repo.upCase?.text.replace(/<!--[\s\S]*?-->/g, '');
+      return readme.replace(/<img\b[^>]*>/g, '');
+    }
+    return '';
+  }
+
   if ((userRepos.length) === 0) {
     console.log("NO INFO");
   }
@@ -22,6 +40,38 @@ const DashboardRepos = () => {
   console.log(userRepos);
 
   console.log(nFormatter(4472543));
+
+  return (
+    <section className="user-repos-component">
+      {userRepos &&
+        searchReposResult?.map((repo: any) => {
+          const { id, name, owner, url, createdAt } = repo
+
+          return (
+            <article key={id} className="user-repos-component__article">
+              <div className="user-repos-component__article--avatar">
+                <img src={owner.avatarUrl} alt={owner.login} />
+              </div>
+              <div className="user-repos-component__article--wrapper">
+                <div className="user-repos-component__article--wrapper__head">
+                  <h4>{name}</h4>
+                  <p>{moment(createdAt, "YYYYMMDD").fromNow()}</p>
+                </div>
+                <div className="user-repos-component__article--wrapper__body">
+                  <ReactMarkdown children={repoReadme(repo)} disallowedElements={["img", "code"]} />
+                  {repoReadme(repo).length > 120 &&
+                    <a href={url} className="user-repos-component__article--wrapper__body--more">
+                      Show repository
+                    </a>
+                  }
+                </div>
+              </div>
+            </article>
+          )
+        })
+      }
+    </section>
+  )
 
   return (
     <div>

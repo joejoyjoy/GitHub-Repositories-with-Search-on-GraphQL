@@ -81,30 +81,16 @@ const DashboardSettings = () => {
           <BsTriangleFill className={current === "NAME" && direction === "DESC" ? " selected" : ""} />
           <p>Name</p>
         </span>
-        <span onClick={handleCreatedAt} className={`settings-component__settings--wrapper${current === "CREATED_AT" ? " active" : ""}`}>
-          <BsTriangleFill className={current === "CREATED_AT" && direction === "DESC" ? " selected" : ""} />
-          <p>Created At</p>
-        </span>
         <span onClick={handleModifiedSort} className={`settings-component__settings--wrapper${current === "UPDATED_AT" ? " active" : ""}`}>
           <BsTriangleFill className={current === "UPDATED_AT" && direction === "DESC" ? " selected" : ""} />
           <p>Modified</p>
         </span>
+        <span onClick={handleCreatedAt} className={`settings-component__settings--wrapper${current === "CREATED_AT" ? " active" : ""}`}>
+          <BsTriangleFill className={current === "CREATED_AT" && direction === "DESC" ? " selected" : ""} />
+          <p>Created At</p>
+        </span>
       </div>
     </section>
-  )
-
-  return (
-    <div>
-      <div>DashboardPage</div>
-      <h3>User Data</h3>
-      {userRepos &&
-        userRepos.map((repo: any) => {
-          return <a href={repo.url} key={repo.id}>{repo.name}</a>
-        })
-      }
-      <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt incidunt eaque dolores nisi eveniet exercitationem eligendi est quam obcaecati, optio quisquam neque eum, a non pariatur excepturi provident esse ab.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel accusantium illum perferendis. Quod porro incidunt quasi eligendi debitis adipisci est distinctio consequuntur magni sit eaque, cum dolores totam nihil accusantium.</div>
-    </div>
   )
 }
 

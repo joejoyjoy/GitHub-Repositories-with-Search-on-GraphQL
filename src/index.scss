@@ -22,5 +22,10 @@
 body {
   margin: 0;
   display: flex;
+  user-select: none;
   background-color: $background-color-primary;
+}
+
+#root {
+  width: 100%;
 }
