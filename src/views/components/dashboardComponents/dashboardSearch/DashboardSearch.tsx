@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { UserReposDataContext } from "../../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
+import { SearchUserReposContext } from "../../../../context/SearchUserReposContext";
 import { CiSearch } from 'react-icons/ci';
 import './dashboardSearch.scss'
 
 const DashboardSearch = () => {
+  const { keyword, handleSearch } = useContext(SearchUserReposContext)
   const { userRepos } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
 
@@ -18,9 +20,15 @@ const DashboardSearch = () => {
   return (
     <section className="search-component">
       <div className="search-component__icon">
-        <CiSearch  />
+        <CiSearch />
       </div>
-      <input type="text" className="search-component__search" placeholder="Search..." />
+      <input
+        type="text"
+        value={keyword}
+        onChange={handleSearch}
+        placeholder="Search..."
+        className="search-component__search"
+      />
     </section>
   )
 
