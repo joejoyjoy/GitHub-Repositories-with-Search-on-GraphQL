@@ -1,6 +1,8 @@
-.dashboard-page {
+@import '../../../sass/';
+
+.desktop-dashboard-page {
   margin: 0 auto;
-  
+
   &__wrapper {
     display: grid;
     grid-template-columns: 220px 1fr 220px;
@@ -9,14 +11,51 @@
     margin: 0 auto;
     max-width: 1536px;
 
-    @media (max-width: 1200px) {
+    @media (max-width: $media-breakpoint-desktop-lg) {
       grid-template-columns: 220px 1fr;
+      grid-gap: 1.4rem;
+      padding: 1.2rem;
 
       &--user {
         display: flex;
         flex-direction: column;
         gap: 2rem;
       }
+    }
+  }
+}
+
+.mobile-dashboard-page {
+  margin: 0 auto;
+  
+  &__wrapper {
+    position: relative;
+    padding: 1.2rem;
+    margin: 0 auto;
+
+    &--repos {
+      display: none;
+    }
+
+    .show-repos {
+      display: block;
+      padding-bottom: 5rem;
+    }
+
+    &--user {
+      display: none;
+    }
+
+    .show-user {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: inline;
+      width: -webkit-fill-available;
+      max-width: 430px;
+      margin: 0 auto;
+      padding-bottom: 5rem;
     }
   }
 }

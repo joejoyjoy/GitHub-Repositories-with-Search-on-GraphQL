@@ -1,21 +1,43 @@
-import DashboardDesktopUserCard from "../../components/desktop/dashboardDUserCard";
+import { useState, Suspense } from "react";
+import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
+import { desktopBreak, responsiveBreak } from "../../../utils/componentsConstants";
+import './dashboardPage.scss'
+
+// Components 
 import DashboardSocialSidebar from "../../components/dashboardSocialSidebar";
 import DashboardSearch from "../../components/dashboardSearch";
 import DashboardSettings from "../../components/dashboardSettings";
 import DashboardRepos from "../../components/dashboardRepos";
-import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
-import './dashboardPage.scss'
 
-const DashboardPage = () => {
+// Desktop
+import DashboardDesktopUserCard from "../../components/desktop/dashboardDUserCard";
+
+// Mobile
+import DashboardMobileUserCard from "../../components/mobile/dashboardMUserCard/DashboardMUserCard";
+import DashboardMobileNavbar from "../../components/mobile/dashboardMNavbar/DashboardMNavbar";
+
+export default function DashboardPage() {
   const [screenWidth] = useWindowSizeReport();
 
   return (
-    <main className="dashboard-page">
-      <div className="dashboard-page__wrapper">
-        {screenWidth > 1200 ?
+    <Suspense fallback={<></>}>
+      {(screenWidth > responsiveBreak) ? (
+        <DesktopDashboardPage screenWidth={screenWidth} />
+      ) : (
+        <MobileDashboardPage />
+      )}
+    </Suspense>
+  )
+}
+
+const DesktopDashboardPage = ({ screenWidth }: any) => {
+  return (
+    <main className="desktop-dashboard-page">
+      <div className="desktop-dashboard-page__wrapper">
+        {screenWidth > desktopBreak ?
           <DashboardDesktopUserCard />
           :
-          <div className="dashboard-page__wrapper--user">
+          <div className="desktop-dashboard-page__wrapper--user">
             <DashboardDesktopUserCard />
             <DashboardSocialSidebar />
           </div>
@@ -25,7 +47,7 @@ const DashboardPage = () => {
           <DashboardSettings />
           <DashboardRepos />
         </div>
-        {screenWidth > 1200 &&
+        {screenWidth > desktopBreak &&
           <DashboardSocialSidebar />
         }
       </div>
@@ -33,4 +55,23 @@ const DashboardPage = () => {
   )
 }
 
-export default DashboardPage;
+const MobileDashboardPage = () => {
+  const [showUser, setShowUser] = useState<boolean>(true)
+
+  return (
+    <main className="mobile-dashboard-page">
+      <div className="mobile-dashboard-page__wrapper">
+        <div className={`mobile-dashboard-page__wrapper--repos${showUser ? " show-repos" : ""}`}>
+          <DashboardSearch />
+          <DashboardSettings />
+          <DashboardRepos />
+        </div>
+        <div className={`mobile-dashboard-page__wrapper--user${showUser ? "" : " show-user"}`} >
+          <DashboardMobileUserCard />
+          <DashboardSocialSidebar />
+        </div>
+        <DashboardMobileNavbar showUser={showUser} setShowUser={setShowUser} />
+      </div>
+    </main>
+  )
+}

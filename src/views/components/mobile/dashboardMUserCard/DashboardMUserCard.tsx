@@ -8,12 +8,15 @@ import './dashboardMUserCard.scss'
 const DashboardMobileUserCard = () => {
   const { setAccessToken } = useContext(UserAccessTokenContext)
   const { userDetails } = useContext(UserDetailsContext)
-  const { avatarUrl, name, login, url, issues, followers, following} = userDetails
+  const { avatarUrl, name, login, url, issues, followers, following } = userDetails
 
   return (
     <section className="user-mobile-card-component">
-      <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-mobile-card-component__avatar"/>
+      <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-mobile-card-component__avatar" />
       <div className="user-mobile-card-component__wrapper">
+        <button onClick={() => setAccessToken('')} className="user-mobile-card-component__wrapper--logout">
+          Log out
+        </button>
         <div className="user-mobile-card-component__wrapper--component">
           <a href={url ? url : "#"} className="user-mobile-card-component__wrapper--component__user">
             <h3>{name ? name : "User Name"}</h3>
@@ -36,10 +39,6 @@ const DashboardMobileUserCard = () => {
             </div>
           </div>
         </div>
-        <hr className="user-mobile-card-component__wrapper--hr"/>
-        <button onClick={() => setAccessToken('')} className="user-mobile-card-component__wrapper--logout">
-          Log out
-        </button>
       </div>
     </section>
   )

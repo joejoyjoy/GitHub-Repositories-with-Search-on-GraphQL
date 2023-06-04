@@ -1,14 +1,16 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { UserReposDataContext } from "../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
+import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
+import { mobileBreak } from "../../../utils/componentsConstants";
 import nFormatter from "../../../utils/nFormatter";
 import './dashboardRepos.scss'
 
-const DashboardRepos = () => {
+export default function DashboardRepos() {
   const { userRepos } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
@@ -51,23 +53,16 @@ const DashboardRepos = () => {
 
           return (
             <article key={id} className="user-repos-component__article">
-              <div className="user-repos-component__article--avatar">
-                <img src={owner.avatarUrl} alt={owner.login} />
-              </div>
-              <div className="user-repos-component__article--wrapper">
-                <div className="user-repos-component__article--wrapper__head">
-                  <h4>{name}</h4>
-                  <p>{moment(createdAt, "YYYYMMDD").fromNow()}</p>
-                </div>
-                <div className="user-repos-component__article--wrapper__body">
+              <UserRepo owner={owner} name={name} createdAt={createdAt} >
+                <div className="user-repos-component-body">
                   <ReactMarkdown children={repoReadme(repo)} disallowedElements={["img", "code"]} />
                   {repoReadme(repo).length > 120 &&
-                    <a href={url} className="user-repos-component__article--wrapper__body--more">
+                    <a href={url} className="user-repos-component-body--more">
                       Show repository
                     </a>
                   }
                 </div>
-              </div>
+              </UserRepo>
             </article>
           )
         })
@@ -76,4 +71,38 @@ const DashboardRepos = () => {
   )
 }
 
-export default DashboardRepos
+const UserRepo = ({ owner, name, createdAt, children }: any) => {
+  const [screenWidth] = useWindowSizeReport();
+
+  if (screenWidth > mobileBreak) {
+    return (
+      <>
+        <div className="user-repos-desktop-avatar">
+          <img src={owner.avatarUrl} alt={owner.login} />
+        </div>
+        <div className="user-repos-desktop-wrapper">
+          <div className="user-repos-desktop-wrapper__head">
+            <h4>{name}</h4>
+            <p>{moment(createdAt, "YYYYMMDD").fromNow()}</p>
+          </div>
+          {children}
+        </div>
+      </>
+    )
+  }
+
+  return (
+    <>
+      <div className="user-repos-mobile-wrapper">
+        <div className="user-repos-mobile-wrapper__head">
+          <div className="user-repos-mobile-wrapper__head--user">
+            <img src={owner.avatarUrl} alt={owner.login} />
+            <h4>{name}</h4>
+          </div>
+          <p>{moment(createdAt, "YYYYMMDD").fromNow()}</p>
+        </div>
+        {children}
+      </div>
+    </>
+  )
+}

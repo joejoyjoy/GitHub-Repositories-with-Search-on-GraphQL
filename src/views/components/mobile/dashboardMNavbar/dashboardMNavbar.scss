@@ -1,0 +1,44 @@
+@import '../../../../sass/';
+
+.mobile-navbar-component {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 5rem;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  background: rgb(47, 43, 67);
+  background: linear-gradient(90deg, #2F293E 0%, #443747 100%);
+
+  &__action {
+    color: $color-info;
+    padding: 0.8rem 0.8rem;
+    border: 0;
+    border-radius: 1rem;
+    background: none;
+    transition: color 0.4s;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary;
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .active-nav {
+    color: $color-primary;
+    background-color: $color-main;
+
+    &:hover {
+      background-color: $color-main-hover;
+    }
+  }
+}

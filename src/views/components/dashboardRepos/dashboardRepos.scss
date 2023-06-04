@@ -14,84 +14,134 @@
     padding-right: 2.4rem;
     background-color: $background-color-secondary;
 
-    &--avatar {
-      margin-right: 1.4rem;
+    @media (max-width: $media-breakpoint-desktop-md) {
+      grid-template-columns: auto;
+      padding-right: 1.4rem;
+    }
+  }
+}
+
+.user-repos-desktop-avatar {
+  margin-right: 1.4rem;
+
+  img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+
+.user-repos-desktop-wrapper {
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 36.4px;
+
+    h4 {
+      color: $color-primary;
+      font-size: 17px;
+      font-weight: 400;
+      margin: 0;
+      margin-bottom: 0.3rem;
+      overflow: hidden;
+      height: 21px;
+      overflow-wrap: break-word;
+    }
+
+    p {
+      color: $color-secondary;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 0;
+    }
+  }
+}
+
+.user-repos-mobile-wrapper {
+  &__head {
+    display: grid;
+    grid-template-columns: auto 100px;
+    align-items: center;
+    height: 36.4px;
+
+    &--user {
+      display: flex;
+      align-items: center;
 
       img {
-        width: 100%;
+        width: 36.4px;
+        margin-right: 1.4rem;
         aspect-ratio: 1 / 1;
         object-fit: cover;
         border-radius: 50%;
       }
+
+      h4 {
+        display: inline-block;
+        color: $color-primary;
+        font-size: 17px;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 0.3rem;
+        word-break: break-word;
+        overflow: hidden;
+        max-height: 41px;
+      }
     }
 
-    &--wrapper {
+    p {
+      color: $color-secondary;
+      font-size: 14px;
+      font-weight: 300;
+      margin: 0;
+      text-align: end;
+    }
+  }
+}
 
-      &__head {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 36.4px;
+.user-repos-component-body {
+  position: relative;
+  max-height: 320px;
+  overflow: hidden;
 
-        h4 {
-          color: $color-primary;
-          font-size: 17px;
-          font-weight: 400;
-          margin: 0;
-          margin-bottom: 0.3rem;
-          overflow: hidden;
-          height: 21px;
-          overflow-wrap: break-word;
-        }
+  a {
+    color: $color-main-hover;
+    text-decoration: none;
+    transition: color 0.4s;
 
-        p {
-          color: $color-secondary;
-          font-size: 14px;
-          font-weight: 300;
-          margin: 0;
-        }
-      }
+    &:hover {
+      color: $color-main;
+      text-decoration: underline;
+    }
+  }
 
-      &__body {
-        position: relative;
-        max-height: 320px;
-        overflow: hidden;
+  &--more {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    padding-right: 56px;
+    padding-bottom: 0.4rem;
+    color: $color-primary !important;
+    font-weight: 600;
+    background: #1e1a32;
+    background: linear-gradient(0deg, #1e1a32 0%, #1e1a32c4 8%, rgba(0, 0, 0, 0) 30%);
+    cursor: pointer;
+    transition: color 0.4s;
 
-        a {
-          color: $color-main-hover;
-          text-decoration: none;
-          transition: color 0.4s;
+    @media (max-width: $media-breakpoint-desktop-md) {
+      padding-right: 0;
+    }
 
-          &:hover {
-            color: $color-main;
-            text-decoration: underline;
-          }
-        }
-
-        &--more {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          display: flex;
-          justify-content: center;
-          align-items: end;
-          padding-right: 56px;
-          padding-bottom: 0.4rem;
-          color: $color-primary !important;
-          font-weight: 600;
-          background: #1e1a32;
-          background: linear-gradient(0deg, #1e1a32 0%, #1e1a32c4 8%, rgba(0, 0, 0, 0) 30%);
-          cursor: pointer;
-          transition: color 0.4s;
-
-          &:hover {
-            color: $color-main !important;
-            text-decoration: underline;
-          }
-        }
-      }
+    &:hover {
+      color: $color-main !important;
+      text-decoration: underline;
     }
   }
 }
