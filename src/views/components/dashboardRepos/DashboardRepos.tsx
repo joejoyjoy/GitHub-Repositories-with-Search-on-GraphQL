@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
@@ -7,13 +7,15 @@ import { UserDetailsContext } from "../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import { mobileBreak } from "../../../utils/componentsConstants";
-import nFormatter from "../../../utils/nFormatter";
+import Loader from "../../../UI";
+import Empty from '../../../assets/png/empty-error.png'
 import './dashboardRepos.scss'
 
 export default function DashboardRepos() {
   const { userRepos } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
+  const [noRepos, setNoRepos] = useState(false)
   const [listRef] = useAutoAnimate();
 
   const searchReposResult = userRepos.filter((p: any) =>
@@ -37,13 +39,34 @@ export default function DashboardRepos() {
   }
 
   if ((userRepos.length) === 0) {
-    console.log("NO INFO");
+    setTimeout(() => {
+      setNoRepos(true)
+    }, 3000);
+
+    if (noRepos) {
+      return (
+        <section className="error-no-repos">
+          <img src={Empty} alt="No search results image error" />
+          <p>No Repositories found - <a href={`${userDetails?.url}?tab=repositories`}>Add one now!</a></p>
+        </section>
+      )
+    }
+
+    return (
+      <section className="error-no-repos">
+        <Loader />
+      </section>
+    )
   }
 
-  console.log(userDetails);
-  console.log(userRepos);
-
-  console.log(nFormatter(4472543));
+  if ((searchReposResult.length) === 0) {
+    return (
+      <section className="error-no-repos">
+        <img src={Empty} alt="No search results image error" />
+        <p>No Repository name match you search</p>
+      </section>
+    )
+  }
 
   return (
     <section className="user-repos-component" ref={listRef} >

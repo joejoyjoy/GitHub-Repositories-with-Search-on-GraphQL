@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { UserAccessTokenContext } from "../../../context/UserAccessTokenContext";
 import { UserReposDataContext } from "../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../context/UserDetailsContext";
+import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
 import { getUserGithubRepos } from "../../../api/graphqlRequests";
 import nFormatter from "../../../utils/nFormatter";
 import { BsTriangleFill } from 'react-icons/bs'
@@ -11,6 +12,7 @@ const DashboardSettings = () => {
   const { accessToken } = useContext(UserAccessTokenContext)
   const { userRepos, setUserRepos } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
+  const { keyword } = useContext(SearchUserReposContext)
   const { login, repositories } = userDetails
   const [direction, setDirection] = useState("ASC")
   const [current, setCurrent] = useState("CREATED_AT")
@@ -69,13 +71,13 @@ const DashboardSettings = () => {
     }
   }
 
-  if ((userRepos.length) === 0) {
-    console.log("NO INFO");
-  }
-
+  const searchReposResult = userRepos.filter((p: any) =>
+    p.name.toString().toLowerCase().includes(keyword.toLowerCase())
+  );
+  
   return (
     <section className="settings-component">
-      <span className="settings-component__results">{repositories?.totalCount ? nFormatter(repositories.totalCount) : "NONE"} REPOS</span>
+      <span className="settings-component__results">{searchReposResult?.length ? nFormatter(searchReposResult.length) : "NONE"} REPOS</span>
       <div className="settings-component__settings">
         <span onClick={handleNameSort} className={`settings-component__settings--wrapper${current === "NAME" ? " active" : ""}`}>
           <BsTriangleFill className={current === "NAME" && direction === "DESC" ? " selected" : ""} />

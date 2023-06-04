@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserAccessTokenContext } from "../../../../context/UserAccessTokenContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
 import nFormatter from "../../../../utils/nFormatter";
-import ProfilePlaceholder from '../../../../assets/profile-placeholder-160x160.webp'
+import ProfilePlaceholder from '../../../../assets/webp/profile-placeholder-160x160.webp'
 import './dashboardMUserCard.scss'
 
 const DashboardMobileUserCard = () => {

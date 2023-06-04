@@ -1,4 +1,4 @@
-import BackgroundImage from '../../../../assets/background-login.webp'
+import BackgroundImage from '../../../../assets/webp/background-login.webp'
 import './loginMComponents.scss'
 
 const LoginMComponents = () => {

@@ -145,3 +145,22 @@
     }
   }
 }
+
+.error-no-repos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+
+  a {
+    color: $color-main-hover;
+    text-decoration: none;
+    transition: color 0.4s;
+
+    &:hover {
+      color: $color-main;
+      text-decoration: underline;
+    }
+  }
+}
