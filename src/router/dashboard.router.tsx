@@ -8,7 +8,7 @@ const { VITE_SERVER_URL } = import.meta.env;
 
 export const DashboardRoute = () => {
   const { accessToken } = useContext(UserAccessTokenContext)
-  const { setUserRepos } = useContext(UserReposDataContext)
+  const { setUserRepos, setIsLoading } = useContext(UserReposDataContext)
   const { setUserDetails } = useContext(UserDetailsContext)
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const DashboardRoute = () => {
 
         const fetchRepos = await getUserGithubRepos(accessToken, loggedUserData.login, "CREATED_AT", "DESC");
         setUserRepos(fetchRepos)
-
+        setIsLoading(false)
 
       } catch (err) {
         console.error(err);

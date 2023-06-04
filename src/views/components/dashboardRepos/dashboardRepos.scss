@@ -14,7 +14,7 @@
     padding-right: 2.4rem;
     background-color: $background-color-secondary;
 
-    @media (max-width: $media-breakpoint-desktop-md) {
+    @media (max-width: $media-breakpoint-md) {
       grid-template-columns: auto;
       padding-right: 1.4rem;
     }
@@ -135,7 +135,7 @@
     cursor: pointer;
     transition: color 0.4s;
 
-    @media (max-width: $media-breakpoint-desktop-md) {
+    @media (max-width: $media-breakpoint-md) {
       padding-right: 0;
     }
 

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
 import { useAutoAnimate } from '@formkit/auto-animate/react'
@@ -12,10 +12,9 @@ import Empty from '../../../assets/png/empty-error.png'
 import './dashboardRepos.scss'
 
 export default function DashboardRepos() {
-  const { userRepos } = useContext(UserReposDataContext)
+  const { userRepos, isLoading } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
-  const [noRepos, setNoRepos] = useState(false)
   const [listRef] = useAutoAnimate();
 
   const searchReposResult = userRepos.filter((p: any) =>
@@ -38,23 +37,19 @@ export default function DashboardRepos() {
     return '';
   }
 
-  if ((userRepos.length) === 0) {
-    setTimeout(() => {
-      setNoRepos(true)
-    }, 3000);
-
-    if (noRepos) {
-      return (
-        <section className="error-no-repos">
-          <img src={Empty} alt="No search results image error" />
-          <p>No Repositories found - <a href={`${userDetails?.url}?tab=repositories`}>Add one now!</a></p>
-        </section>
-      )
-    }
-
+  if (isLoading) {
     return (
       <section className="error-no-repos">
         <Loader />
+      </section>
+    )
+  }
+
+  if ((userRepos.length) === 0) {
+    return (
+      <section className="error-no-repos">
+        <img src={Empty} alt="No search results image error" />
+        <p>No Repositories found - <a href={`${userDetails?.url}?tab=repositories`}>Add one now!</a></p>
       </section>
     )
   }

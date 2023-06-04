@@ -6,7 +6,7 @@
   align-items: center;
   margin: 1.4rem 0;
 
-  @media (max-width: $media-breakpoint-desktop-lg) {
+  @media (max-width: $media-breakpoint-lg) {
     margin: 1rem 0;
   }
 
@@ -57,7 +57,7 @@
         transform: rotate(180deg);
         transition: transform 0.4s;
 
-        @media (max-width: $media-breakpoint-desktop-sm) {
+        @media (max-width: $media-breakpoint-sm) {
           display: none;
         }
       }
@@ -66,6 +66,7 @@
         color: $color-primary;
         margin: 0;
         text-align: center;
+        word-break: break-word;
       }
 
       .selected {

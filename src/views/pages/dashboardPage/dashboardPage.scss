@@ -11,7 +11,7 @@
     margin: 0 auto;
     max-width: 1536px;
 
-    @media (max-width: $media-breakpoint-desktop-lg) {
+    @media (max-width: $media-breakpoint-lg) {
       grid-template-columns: 220px 1fr;
       grid-gap: 1.4rem;
       padding: 1.2rem;
@@ -27,7 +27,7 @@
 
 .mobile-dashboard-page {
   margin: 0 auto;
-  
+
   &__wrapper {
     position: relative;
     padding: 1.2rem;

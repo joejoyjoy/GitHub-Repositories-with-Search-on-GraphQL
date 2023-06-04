@@ -10,7 +10,7 @@ import './dashboardSettings.scss'
 
 const DashboardSettings = () => {
   const { accessToken } = useContext(UserAccessTokenContext)
-  const { userRepos, setUserRepos } = useContext(UserReposDataContext)
+  const { userRepos, setUserRepos, setIsLoading } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
   const { login } = userDetails
@@ -18,9 +18,11 @@ const DashboardSettings = () => {
   const [current, setCurrent] = useState("CREATED_AT")
 
   const sortRepos = async (field: string) => {
+    setIsLoading(true)
     const fetchRepos = await getUserGithubRepos(accessToken, login, field, direction);
     setCurrent(field)
     setUserRepos(fetchRepos)
+    setIsLoading(false)
   }
 
   const handleNameSort = () => {
