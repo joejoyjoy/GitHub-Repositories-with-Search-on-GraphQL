@@ -97,7 +97,7 @@ export default function DashboardRepos() {
 const UserRepo = ({ owner, name, createdAt, children }: any) => {
   const [screenWidth] = useWindowSizeReport();
 
-  if (screenWidth > mobileBreak) {
+  if (screenWidth >= mobileBreak) {
     return (
       <>
         <div className="user-repos-desktop-avatar">

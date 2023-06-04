@@ -27,8 +27,14 @@
       width: 100%;
     }
 
+    @media (max-width: 450px) {
+      justify-content: space-between;
+      width: 100%;
+    }
+
     &--wrapper {
       display: flex;
+      justify-content: center;
       align-items: center;
       gap: 0.25rem;
       padding: 0.5rem 1rem;
@@ -38,6 +44,10 @@
 
       @media (max-width: $media-breakpoint-desktop-mobile) {
         background-color: $background-color-main;
+      }
+
+      @media (max-width: 450px) {
+        width: inherit;
       }
 
       svg {
@@ -55,6 +65,7 @@
       p {
         color: $color-primary;
         margin: 0;
+        text-align: center;
       }
 
       .selected {

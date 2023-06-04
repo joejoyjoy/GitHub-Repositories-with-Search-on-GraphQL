@@ -17,7 +17,7 @@ const LoginDComponents = () => {
         </div>
         <div className="login-desktop-component__container--buttons">
           <button onClick={loginWithGithub} className="login-desktop-component__container--buttons__login">Login with GitHub</button>
-          <a href='https://github.com/join' className="login-desktop-component__container--buttons__sign-up">SignUp to GitHub</a>
+          <a href='https://github.com/join' className="login-desktop-component__container--buttons__sign-up">Sign Up to GitHub</a>
         </div>
       </section>
       <section className="login-desktop-component__wrapper">

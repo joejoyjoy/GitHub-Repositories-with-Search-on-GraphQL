@@ -23,7 +23,7 @@ const LoginMComponents = () => {
       </section>
       <section className="login-mobile-component__buttons">
         <button onClick={loginWithGithub} className="login-mobile-component__buttons--login">Login with GitHub</button>
-        <a href='https://github.com/join' className="login-mobile-component__buttons--sign-up">SignUp to GitHub</a>
+        <a href='https://github.com/join' className="login-mobile-component__buttons--sign-up">Sign Up to GitHub</a>
       </section>
     </div>
   );

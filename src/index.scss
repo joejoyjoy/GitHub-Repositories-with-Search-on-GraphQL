@@ -19,6 +19,11 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   display: flex;

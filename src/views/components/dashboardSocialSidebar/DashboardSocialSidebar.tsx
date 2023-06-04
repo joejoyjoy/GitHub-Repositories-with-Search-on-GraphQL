@@ -7,17 +7,13 @@ const DashboardSocialSidebar = () => {
   const { userDetails } = useContext(UserDetailsContext)
   const { following } = userDetails
 
-  if ((userDetails.length) === 0) {
-    console.log("NO INFO");
-  }
-
   return (
     <section className="social-sidebar-component">
       <div className="social-sidebar-component__header">
         <h3>PEOPLE YOU FOLLOW</h3>
       </div>
       <div className="social-sidebar-component__grid">
-        {userDetails?.following &&
+        {userDetails?.following ?
           following?.nodes.map((follower: any) => {
             const { id, avatarUrl, name, login, url } = follower;
             return (
@@ -31,7 +27,9 @@ const DashboardSocialSidebar = () => {
                 </a>
               </div>
             )
-          })}
+          }) :
+          <p>Your currently not following anyone</p>
+        }
       </div>
     </section>
   )

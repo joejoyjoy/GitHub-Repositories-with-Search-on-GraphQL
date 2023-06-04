@@ -94,13 +94,6 @@ export async function getUserGithubRepos(accessToken: string, login: string, fie
                   avatarUrl
                   login
                 }
-                languages(first: 4) {
-                  totalCount
-                  nodes {
-                    color
-                    name
-                  }
-                }
                 upCase: object(expression: "master:README.md") {
                   ... on Blob {
                     text
