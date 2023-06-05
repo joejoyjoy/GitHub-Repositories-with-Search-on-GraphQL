@@ -1,6 +1,6 @@
-`#master-in-software-engineering` `#assembler-institute-of-technology`
+`#master-in-software-engineering` `#react` `#typescript` `#graphql` `#jest-testing`
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" />
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-) <img alt="Version" src="https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000" /> [![Netlify Status](https://api.netlify.com/api/v1/badges/ffa1b730-788e-4fb5-9416-07059649d9b7/deploy-status)](https://app.netlify.com/sites/github-ultimate/deploys)
 
 # GitHub Repositories With Search Functionality
 > This is a web application built with React and TypeScript that provides search functionality for GitHub repositories. It allows users to easily sort and find repositories based on their names.
@@ -57,7 +57,8 @@ Here are some potential areas for improvement in the application:
 ## Deploy version
 #### Just want to see the project in action?
 Good news! There is a deployed version available for everyone.
-Go to next and see the project in action!
+Go to [github-ultimate.netlify.app](https://github-ultimate.netlify.app) and see the project in action!
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ffa1b730-788e-4fb5-9416-07059649d9b7/deploy-status)](https://app.netlify.com/sites/github-ultimate/deploys)
 
 ## Contributors ✨
 
