@@ -67,6 +67,10 @@
         margin: 0;
         text-align: center;
         word-break: break-word;
+
+        @media (max-width: $media-breakpoint-sm) {
+          font-size: 12px;
+        }
       }
 
       .selected {
