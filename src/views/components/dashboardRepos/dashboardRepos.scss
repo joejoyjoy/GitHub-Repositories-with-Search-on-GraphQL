@@ -56,6 +56,14 @@
       font-weight: 300;
       margin: 0;
     }
+
+    &--name {
+      text-decoration: none;
+
+      h4 {
+        @include hyperLink();
+      }
+    }
   }
 }
 
@@ -107,14 +115,7 @@
   overflow: hidden;
 
   a {
-    color: $color-main-hover;
-    text-decoration: none;
-    transition: color 0.4s;
-
-    &:hover {
-      color: $color-main;
-      text-decoration: underline;
-    }
+    @include hyperLink();
   }
 
   &--more {
@@ -154,13 +155,6 @@
   padding-top: 2rem;
 
   a {
-    color: $color-main-hover;
-    text-decoration: none;
-    transition: color 0.4s;
-
-    &:hover {
-      color: $color-main;
-      text-decoration: underline;
-    }
+    @include hyperLink();
   }
 }

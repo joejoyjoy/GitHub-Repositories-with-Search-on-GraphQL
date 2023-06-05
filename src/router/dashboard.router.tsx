@@ -3,39 +3,49 @@ import { Navigate, Outlet } from 'react-router';
 import { UserAccessTokenContext } from "../context/UserAccessTokenContext";
 import { UserReposDataContext } from "../context/UserReposDataContext";
 import { UserDetailsContext } from "../context/UserDetailsContext";
-import { getUserGithubRepos, getUserDetails } from "../api/graphqlRequests";
-const { VITE_SERVER_URL } = import.meta.env;
+import { getUserDetails, getUserGithubRepos } from "../api/siteApiCalls";
 
 export const DashboardRoute = () => {
   const { accessToken } = useContext(UserAccessTokenContext)
   const { setUserRepos, setIsLoading } = useContext(UserReposDataContext)
-  const { setUserDetails } = useContext(UserDetailsContext)
+  const { userDetails, setUserDetails } = useContext(UserDetailsContext)
 
   useEffect(() => {
-    const getUserData = async () => {
-      const fetchUserDetails = await getUserDetails(accessToken);
-      setUserDetails(fetchUserDetails)
+    /**
+    * Making request to server when user in logged in
+    * receiving server response and storing user details
+    * into userDetails useContext.
+    */
 
-      try {
-        const response = await fetch(`${VITE_SERVER_URL}/v1/get-user-data`, {
-          headers: {
-            "Authorization": `Bearer ${accessToken}`
-          }
-        });
+    const callUserDetailsApi = async () => {
+      const request = await getUserDetails(accessToken)
+      setUserDetails(request)
+    }
+    callUserDetailsApi();
 
-        const loggedUserData = await response.json();
-
-        const fetchRepos = await getUserGithubRepos(accessToken, loggedUserData.login, "CREATED_AT", "DESC");
-        setUserRepos(fetchRepos)
-        setIsLoading(false)
-
-      } catch (err) {
-        console.error(err);
-      }
-    }; getUserData();
   }, []);
 
+  useEffect(() => {
+    const { login, repositories } = userDetails
+
+    /**
+    * Fetching user repositories from GraphQL API,
+    * and storing response in userRepos useContext
+    */
+
+    if (login) {
+      const callUserReposApi = async () => {
+        /** Making fetch call on getUserGithubRepos and storing in useContext */
+        const request = await getUserGithubRepos(accessToken, login, repositories.totalCount, "CREATED_AT", "DESC");
+        setUserRepos(request)
+        setIsLoading(false)
+      }; callUserReposApi();
+    }
+
+  }, [userDetails]);
+
   if (!accessToken) {
+    /** In case user goes to dashboard whiteout being logged in redirect */
     return <Navigate to={'/'} />
   }
 

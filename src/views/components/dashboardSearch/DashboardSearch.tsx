@@ -4,6 +4,7 @@ import { CiSearch } from 'react-icons/ci';
 import './dashboardSearch.scss'
 
 const DashboardSearch = () => {
+  /** Search with a useContext global keyword */
   const { keyword, handleSearch } = useContext(SearchUserReposContext)
 
   return (

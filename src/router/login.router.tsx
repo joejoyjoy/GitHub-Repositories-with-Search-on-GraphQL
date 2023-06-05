@@ -1,37 +1,40 @@
 import { useContext, useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from 'react-router';
 import { UserAccessTokenContext } from "../context/UserAccessTokenContext";
-const { VITE_SERVER_URL } = import.meta.env;
+import { getAccessToken } from "../api/siteApiCalls";
 
 export const LoginRoute = () => {
   const navigate = useNavigate();
   const { accessToken, setAccessToken } = useContext(UserAccessTokenContext)
 
   useEffect(() => {
+    /**
+    * Making request to server after page
+    * gets url code param from GitHub OAuth App.
+    * 
+    * Storing server answerer into accessToken useContext,
+    * and redirect to dashboard page
+    */
+
+    /** Retrieving OAuth result */
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const codeParam = urlParams.get("code");
 
     if (codeParam) {
-      const getAccessToken = async () => {
-        try {
-          const response = await fetch(`${VITE_SERVER_URL}/v1/get-access-token?code=${codeParam}`);
-          const data = await response.json();
-
-          if (data.access_token) {
-            setAccessToken(data.access_token);
-          }
-
-          navigate("/dashboard");
-        } catch (err) {
-          console.error(err);
-        }
+      const callAccessTokenApi = async () => {
+        /** Making fetch call on getAccessToken and storing in useContext */
+        const request = await getAccessToken(codeParam)
+        setAccessToken(request);
+        navigate("/dashboard")
       }
-      getAccessToken();
+      callAccessTokenApi();
     }
+
   }, []);
 
   if (accessToken) {
+    /** In case user goes back to login being logged in redirect */
     return <Navigate to={'/dashboard'} />
   }
 

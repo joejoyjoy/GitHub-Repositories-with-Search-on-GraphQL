@@ -34,3 +34,14 @@
     color: $color-main;
   }
 }
+
+@mixin hyperLink() {
+  color: $color-main-hover;
+  text-decoration: none;
+  transition: color 0.4s;
+
+  &:hover {
+    color: $color-main;
+    text-decoration: underline;
+  }
+}

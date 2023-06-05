@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
-// import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { UserReposDataContext } from "../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import { mobileBreak } from "../../../utils/componentsConstants";
+import readmeMakeUp from "../../../utils/readmeMakeUp";
 import Loader from "../../../UI";
 import Empty from '../../../assets/png/empty-error.png'
 import './dashboardRepos.scss'
@@ -15,27 +15,11 @@ export default function DashboardRepos() {
   const { userRepos, isLoading } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
-  // const [listRef] = useAutoAnimate();
 
   const searchReposResult = userRepos.filter((p: any) =>
+    /** Search function with a useContext global keyword */
     p.name.toString().toLowerCase().includes(keyword.toLowerCase())
   );
-
-  const repoReadme = (repo: any) => {
-    if (repo.object !== null) {
-      const readme = repo.object?.text.replace(/<!--[\s\S]*?-->/g, '');
-      return readme.replace(/<img\b[^>]*>/g, '');
-    }
-    if (repo.otherFile !== null) {
-      const readme = repo.otherFile?.text.replace(/<!--[\s\S]*?-->/g, '');
-      return readme.replace(/<img\b[^>]*>/g, '');
-    }
-    if (repo.upCase !== null) {
-      const readme = repo.upCase?.text.replace(/<!--[\s\S]*?-->/g, '');
-      return readme.replace(/<img\b[^>]*>/g, '');
-    }
-    return '';
-  }
 
   if (isLoading) {
     return (
@@ -64,24 +48,21 @@ export default function DashboardRepos() {
   }
 
   return (
-    <section className="user-repos-component"> {/* ref={listRef} */}
+    <section className="user-repos-component">
       {userRepos &&
         searchReposResult?.map((repo: any) => {
-          const { id, name, owner, url, createdAt } = repo
+          const { id, url } = repo;
 
           return (
             <article key={id} className="user-repos-component__article">
-              <UserRepo owner={owner} name={name} createdAt={createdAt} >
+              <UserRepo repo={repo}>
                 <div className="user-repos-component-body">
-                  <ReactMarkdown children={repoReadme(repo)} disallowedElements={["img", "code"]} />
-                  <a
-                    href={url}
-                    className={
-                      `user-repos-component-body--more${repoReadme(repo).length < 120 ? " less-content" : ""}`
-                    }
-                  >
-                    Show repository
-                  </a>
+                  <ReactMarkdown children={readmeMakeUp(repo)} disallowedElements={["img", "code"]} />
+                  {readmeMakeUp(repo).length > 120 &&
+                    <a href={url} className="user-repos-component-body--more">
+                      Show repository
+                    </a>
+                  }
                 </div>
               </UserRepo>
             </article>
@@ -92,7 +73,8 @@ export default function DashboardRepos() {
   )
 }
 
-const UserRepo = ({ owner, name, createdAt, children }: any) => {
+const UserRepo = ({ repo, children }: any) => {
+  const { name, owner, url, createdAt } = repo;
   const [screenWidth] = useWindowSizeReport();
 
   if (screenWidth >= mobileBreak) {
@@ -103,7 +85,13 @@ const UserRepo = ({ owner, name, createdAt, children }: any) => {
         </div>
         <div className="user-repos-desktop-wrapper">
           <div className="user-repos-desktop-wrapper__head">
-            <h4>{name}</h4>
+            {readmeMakeUp(repo).length > 120 ?
+              <h4>{name}</h4>
+              :
+              <a href={url} className="user-repos-desktop-wrapper__head--name">
+                <h4>{name}</h4>
+              </a>
+            }
             <p>{moment(createdAt, "YYYYMMDD").fromNow()}</p>
           </div>
           {children}

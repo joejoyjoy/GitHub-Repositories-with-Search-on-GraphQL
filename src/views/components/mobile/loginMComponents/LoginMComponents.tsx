@@ -5,6 +5,7 @@ const LoginMComponents = () => {
   const { VITE_CLIENT_ID } = import.meta.env;
 
   const loginWithGithub = () => {
+    /** Sending user to GitHub OAuth for Authentication */
     window.location.assign(`https://github.com/login/oauth/authorize?client_id=${VITE_CLIENT_ID}`);
   };
 

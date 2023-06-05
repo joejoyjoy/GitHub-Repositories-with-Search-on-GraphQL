@@ -1,4 +1,6 @@
 export default function nFormatter(num: number) {
+
+  /** Retrieves long numbers and shorts it down */
   const lookup = [
     { value: 1, symbol: "" },
     { value: 1e3, symbol: "k" },

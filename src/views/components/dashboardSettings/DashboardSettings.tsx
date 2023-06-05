@@ -3,7 +3,7 @@ import { UserAccessTokenContext } from "../../../context/UserAccessTokenContext"
 import { UserReposDataContext } from "../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
-import { getUserGithubRepos } from "../../../api/graphqlRequests";
+import { getUserGithubRepos } from "../../../api/siteApiCalls";
 import nFormatter from "../../../utils/nFormatter";
 import { BsTriangleFill } from 'react-icons/bs'
 import './dashboardSettings.scss'
@@ -13,28 +13,35 @@ const DashboardSettings = () => {
   const { userRepos, setUserRepos, setIsLoading } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
-  const { login } = userDetails
+  const { login, repositories } = userDetails
   const [direction, setDirection] = useState("ASC")
   const [current, setCurrent] = useState("CREATED_AT")
 
   const sortRepos = async (field: string) => {
+    /** Creating request of user sorting demand */
     setIsLoading(true)
-    const fetchRepos = await getUserGithubRepos(accessToken, login, field, direction);
+    const fetchRepos = await getUserGithubRepos(accessToken, login, repositories.totalCount, field, direction);
     setCurrent(field)
     setUserRepos(fetchRepos)
     setIsLoading(false)
   }
 
   const handleNameSort = () => {
+
+    /** Checking is user wants to change direction or sorting type */
     if (current !== "NAME") {
       setDirection("DESC")
       sortRepos("NAME")
       return;
     }
+
+    // Changing direction depending on current state
     if (direction === "ASC") {
       setDirection("DESC")
       sortRepos("NAME")
     }
+
+    // Changing direction depending on current state
     if (direction === "DESC") {
       setDirection("ASC")
       sortRepos("NAME")
@@ -42,15 +49,21 @@ const DashboardSettings = () => {
   }
 
   const handleCreatedAt = () => {
+
+    /** Checking is user wants to change direction or sorting type */
     if (current !== "CREATED_AT") {
       setDirection("ASC")
       sortRepos("CREATED_AT")
       return;
     }
+
+    // Changing direction depending on current state
     if (direction === "ASC") {
       setDirection("DESC")
       sortRepos("CREATED_AT")
     }
+
+    // Changing direction depending on current state
     if (direction === "DESC") {
       setDirection("ASC")
       sortRepos("CREATED_AT")
@@ -58,15 +71,21 @@ const DashboardSettings = () => {
   }
 
   const handleModifiedSort = () => {
+
+    /** Checking is user wants to change direction or sorting type */
     if (current !== "UPDATED_AT") {
       setDirection("ASC")
       sortRepos("UPDATED_AT")
       return;
     }
+
+    // Changing direction depending on current state
     if (direction === "ASC") {
       setDirection("DESC")
       sortRepos("UPDATED_AT")
     }
+
+    // Changing direction depending on current state
     if (direction === "DESC") {
       setDirection("ASC")
       sortRepos("UPDATED_AT")
@@ -74,9 +93,10 @@ const DashboardSettings = () => {
   }
 
   const searchReposResult = userRepos.filter((p: any) =>
+    /** Search function with a useContext global keyword */
     p.name.toString().toLowerCase().includes(keyword.toLowerCase())
   );
-  
+
   return (
     <section className="settings-component">
       <span className="settings-component__results">{searchReposResult?.length ? nFormatter(searchReposResult.length) : "NONE"} REPOS</span>

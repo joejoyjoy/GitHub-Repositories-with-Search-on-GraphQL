@@ -2,7 +2,7 @@ import { HiUserGroup } from 'react-icons/hi'
 import { AiFillHome } from 'react-icons/ai'
 import './dashboardMNavbar.scss'
 
-const DashboardMobileNavbar = ({ showUser, setShowUser }) => {
+const DashboardMobileNavbar = ({ showUser, setShowUser }: any) => {
 
   return (
     <section className="mobile-navbar-component">
