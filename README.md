@@ -30,13 +30,13 @@
     npm run dev
   ```
 
+- Don't forget to also do the same thing with the [backend](https://github.com/joejoyjoy/node-github-repositories-with-search-graphql). Get further instructions on `https://github.com/joejoyjoy/node-github-repositories-with-search-graphql`
+
 - Run the next code in the terminal for testing purposes.
 
 - ```
     npm test
   ```
-
-- Don't forget to also do the same thing with the [backend](https://github.com/joejoyjoy/node-github-repositories-with-search-graphql). Get further instructions on `https://github.com/joejoyjoy/node-github-repositories-with-search-graphql`
 
 ## About the project
 
