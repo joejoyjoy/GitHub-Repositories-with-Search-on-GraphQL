@@ -3,7 +3,7 @@ import { DashboardRoute } from "./dashboard.router.tsx";
 import { LoginRoute } from "./login.router.tsx";
 import LoginPage from '../views/pages/loginPage';
 import DashboardPage from '../views/pages/dashboardPage';
-import ErrorPage from '../views/pages/errorPage';
+import ErrorPage from "../views/pages/errorPage/ErrorPage.tsx";
 
 function routes() {
   return (
