@@ -15,9 +15,9 @@ const LoginDComponents = () => {
           <h1>GitHub Ultimate</h1>
           <p>Get the most out of you GitHub account! <br />We provide you with the best tools to get into your code faster</p>
         </div>
-        <div className="login-desktop-component__container--buttons">
-          <button onClick={loginWithGithub} className="login-desktop-component__container--buttons__login">Login with GitHub</button>
-          <a href='https://github.com/join' className="login-desktop-component__container--buttons__sign-up">Sign Up to GitHub</a>
+        <div className="login-desktop-component__container--buttons" data-test="login-form">
+          <button onClick={loginWithGithub} data-test="login-button" className="login-desktop-component__container--buttons__login">Login with GitHub</button>
+          <a href='https://github.com/join' data-test="sign-button" className="login-desktop-component__container--buttons__sign-up">Sign Up to GitHub</a>
         </div>
       </section>
       <section className="login-desktop-component__wrapper">

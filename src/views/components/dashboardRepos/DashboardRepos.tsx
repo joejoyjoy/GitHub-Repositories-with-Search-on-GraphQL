@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ReactMarkdown from 'react-markdown';
 import moment from "moment";
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+// import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { UserReposDataContext } from "../../../context/UserReposDataContext";
 import { UserDetailsContext } from "../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
@@ -15,7 +15,7 @@ export default function DashboardRepos() {
   const { userRepos, isLoading } = useContext(UserReposDataContext)
   const { userDetails } = useContext(UserDetailsContext)
   const { keyword } = useContext(SearchUserReposContext)
-  const [listRef] = useAutoAnimate();
+  // const [listRef] = useAutoAnimate();
 
   const searchReposResult = userRepos.filter((p: any) =>
     p.name.toString().toLowerCase().includes(keyword.toLowerCase())
@@ -64,7 +64,7 @@ export default function DashboardRepos() {
   }
 
   return (
-    <section className="user-repos-component" ref={listRef} >
+    <section className="user-repos-component"> {/* ref={listRef} */}
       {userRepos &&
         searchReposResult?.map((repo: any) => {
           const { id, name, owner, url, createdAt } = repo
@@ -74,11 +74,14 @@ export default function DashboardRepos() {
               <UserRepo owner={owner} name={name} createdAt={createdAt} >
                 <div className="user-repos-component-body">
                   <ReactMarkdown children={repoReadme(repo)} disallowedElements={["img", "code"]} />
-                  {repoReadme(repo).length > 120 &&
-                    <a href={url} className="user-repos-component-body--more">
-                      Show repository
-                    </a>
-                  }
+                  <a
+                    href={url}
+                    className={
+                      `user-repos-component-body--more${repoReadme(repo).length < 120 ? " less-content" : ""}`
+                    }
+                  >
+                    Show repository
+                  </a>
                 </div>
               </UserRepo>
             </article>

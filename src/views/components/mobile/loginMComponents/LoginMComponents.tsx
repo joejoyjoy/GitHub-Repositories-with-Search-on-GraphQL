@@ -21,9 +21,9 @@ const LoginMComponents = () => {
           <p>Get the most out of you GitHub account! We provide you with the best tools to get into your code faster</p>
         </div>
       </section>
-      <section className="login-mobile-component__buttons">
-        <button onClick={loginWithGithub} className="login-mobile-component__buttons--login">Login with GitHub</button>
-        <a href='https://github.com/join' className="login-mobile-component__buttons--sign-up">Sign Up to GitHub</a>
+      <section className="login-mobile-component__buttons" data-test="login-form">
+        <button onClick={loginWithGithub} data-test="login-button" className="login-mobile-component__buttons--login">Login with GitHub</button>
+        <a href='https://github.com/join' data-test="sign-button" className="login-mobile-component__buttons--sign-up">Sign Up to GitHub</a>
       </section>
     </div>
   );

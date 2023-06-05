@@ -30,10 +30,10 @@ export default function DashboardPage() {
   )
 }
 
-const DesktopDashboardPage = ({ screenWidth }: any) => {
+export const DesktopDashboardPage = ({ screenWidth }: any) => {
   return (
     <main className="desktop-dashboard-page">
-      <div className="desktop-dashboard-page__wrapper">
+      <div data-test='desktop-dashboard' className="desktop-dashboard-page__wrapper">
         {screenWidth > desktopBreak ?
           <DashboardDesktopUserCard />
           :
@@ -55,7 +55,7 @@ const DesktopDashboardPage = ({ screenWidth }: any) => {
   )
 }
 
-const MobileDashboardPage = () => {
+export const MobileDashboardPage = () => {
   const [showUser, setShowUser] = useState<boolean>(true)
 
   return (
