@@ -25,7 +25,7 @@ export async function getUserDetails(accessToken: string) {
     });
 
     const data = await response.json();
-    return data.data.viewer;
+    return data?.data.viewer;
 
   } catch (err) {
     console.error(err);
