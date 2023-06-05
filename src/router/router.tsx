@@ -3,7 +3,7 @@ import { DashboardRoute } from "./dashboard.router.tsx";
 import { LoginRoute } from "./login.router.tsx";
 import LoginPage from '../views/pages/loginPage';
 import DashboardPage from '../views/pages/dashboardPage';
-import ErrorPage from "../views/pages/errorPage";
+// import ErrorPage from "../views/pages/errorPage";
 
 function routes() {
   return (
@@ -15,7 +15,7 @@ function routes() {
         <Route path='/dashboard' element={<DashboardRoute />}>
           <Route index element={<DashboardPage />} />
         </Route>
-        <Route path='/*' element={<ErrorPage />} />
+        <Route path='/*' element={<h2>ERROR 404</h2>} />
       </Routes>
     </BrowserRouter>
   )
