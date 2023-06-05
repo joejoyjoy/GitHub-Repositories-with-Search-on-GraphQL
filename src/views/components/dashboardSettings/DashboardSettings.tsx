@@ -30,7 +30,7 @@ const DashboardSettings = () => {
 
     /** Checking is user wants to change direction or sorting type */
     if (current !== "NAME") {
-      setDirection("DESC")
+      setDirection("ASC")
       sortRepos("NAME")
       return;
     }
@@ -102,7 +102,7 @@ const DashboardSettings = () => {
       <span className="settings-component__results">{searchReposResult?.length ? nFormatter(searchReposResult.length) : "NONE"} REPOS</span>
       <div className="settings-component__settings">
         <span onClick={handleNameSort} className={`settings-component__settings--wrapper${current === "NAME" ? " active" : ""}`}>
-          <BsTriangleFill className={current === "NAME" && direction === "ASC" ? " selected" : ""} />
+          <BsTriangleFill className={current === "NAME" && direction === "DESC" ? " selected" : ""} />
           <p>Name</p>
         </span>
         <span onClick={handleModifiedSort} className={`settings-component__settings--wrapper${current === "UPDATED_AT" ? " active" : ""}`}>
