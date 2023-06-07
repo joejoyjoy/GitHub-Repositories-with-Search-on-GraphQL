@@ -16,11 +16,9 @@ export const DashboardRoute = () => {
     * receiving server response and storing user details
     * into userDetails useContext.
     */
-    console.log(`Dashboard accessToken: ${accessToken}`);
     
     const callUserDetailsApi = async () => {
       const request = await getUserDetails(accessToken)
-      console.log(`Dashboard getUserDetails: ${request}`);
       setUserDetails(request)
     }
     callUserDetailsApi();
@@ -39,7 +37,6 @@ export const DashboardRoute = () => {
      const callUserReposApi = async () => {
        /** Making fetch call on getUserGithubRepos and storing in useContext */
        const request = await getUserGithubRepos(accessToken, login, repositories.totalCount, "CREATED_AT", "DESC");
-       console.log(`Dashboard getUserGithubRepos: ${request}`);
         setUserRepos(request)
         setIsLoading(false)
       }; callUserReposApi();

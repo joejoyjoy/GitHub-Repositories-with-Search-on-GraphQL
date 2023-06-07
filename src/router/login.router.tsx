@@ -24,8 +24,10 @@ export const LoginRoute = () => {
     if (codeParam) {
       console.log(codeParam);
       const callAccessTokenApi = async () => {
+        console.log(codeParam);
         /** Making fetch call on getAccessToken and storing in useContext */
         const request = await getAccessToken(codeParam)
+        console.log(request);
         setAccessToken(request);
         console.log(request);
         navigate("./dashboard")
