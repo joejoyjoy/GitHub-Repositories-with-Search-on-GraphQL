@@ -1,0 +1,54 @@
+@import '../../../sass/';
+
+.button-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  text-decoration: none;
+  color: $color-primary;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.8rem;
+  border: 0;
+  background-color: transparent;
+  border-radius: 1.4rem;
+  transition: background-color 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-main-hover;
+  }
+}
+
+.button-component--primary {
+  background-color: $color-main;
+  
+  &:hover {
+    background-color: $color-main-hover;
+  }
+}
+
+.button-component--secondary {
+  background-color: $background-color-main;
+  
+  &:hover {
+    background-color: $background-color-main-hover;;
+  }
+}
+
+.button-component--small {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
+.button-component--medium {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+
+.button-component--large {
+  font-size: 16px;
+  padding: 12px 24px;
+}
