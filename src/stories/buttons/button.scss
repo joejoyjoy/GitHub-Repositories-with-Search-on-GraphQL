@@ -1,4 +1,4 @@
-@import '../../../sass/';
+@import '../../sass/';
 
 .button-component {
   display: flex;
@@ -12,14 +12,9 @@
   font-size: 14px;
   padding: 0.8rem;
   border: 0;
-  background-color: transparent;
   border-radius: 1.4rem;
   transition: background-color 0.4s;
   cursor: pointer;
-
-  &:hover {
-    background-color: $color-main-hover;
-  }
 }
 
 .button-component--primary {
@@ -36,19 +31,4 @@
   &:hover {
     background-color: $background-color-main-hover;;
   }
-}
-
-.button-component--small {
-  font-size: 12px;
-  padding: 10px 16px;
-}
-
-.button-component--medium {
-  font-size: 14px;
-  padding: 11px 20px;
-}
-
-.button-component--large {
-  font-size: 16px;
-  padding: 12px 24px;
 }

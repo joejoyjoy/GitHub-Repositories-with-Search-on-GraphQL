@@ -1,6 +1,6 @@
 import BackgroundImage from '../../../../assets/webp/background-login.webp'
 import './loginMComponents.scss'
-import { ButtonComponent } from '../../buttonComponent/buttonComponent';
+import { Button } from '../../../../stories/buttons/Button';
 
 const LoginMComponents = () => {
   const { VITE_CLIENT_ID } = import.meta.env;
@@ -24,8 +24,8 @@ const LoginMComponents = () => {
         </div>
       </section>
       <section className="login-mobile-component__buttons" data-test="login-form">
-        <ButtonComponent onClick={loginWithGithub} data-test="login-button" className="login-mobile-component__buttons--login">Login with GitHub</ButtonComponent>
-        <a href='https://github.com/join' data-test="sign-button" className="login-mobile-component__buttons--sign-up">Sign Up to GitHub</a>
+        <Button onClick={loginWithGithub} primary={true} data-test="login-button" label={"Login with GitHub"} />
+        <Button href='https://github.com/join' data-test="sign-button" label={"Sign Up to GitHub"} />
       </section>
     </div>
   );
