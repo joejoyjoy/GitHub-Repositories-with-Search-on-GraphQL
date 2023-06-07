@@ -22,10 +22,12 @@ export const LoginRoute = () => {
     const codeParam = urlParams.get("code");
 
     if (codeParam) {
+      console.log(codeParam);
       const callAccessTokenApi = async () => {
         /** Making fetch call on getAccessToken and storing in useContext */
         const request = await getAccessToken(codeParam)
         setAccessToken(request);
+        console.log(request);
         navigate("./dashboard")
       }
       callAccessTokenApi();
