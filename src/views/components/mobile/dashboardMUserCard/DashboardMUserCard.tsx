@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserAccessTokenContext } from "../../../../context/UserAccessTokenContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
+import { Button } from "../../../../stories/buttons/Button";
 import nFormatter from "../../../../utils/nFormatter";
 import ProfilePlaceholder from '../../../../assets/webp/profile-placeholder-160x160.webp'
 import './dashboardMUserCard.scss'
@@ -14,9 +15,9 @@ const DashboardMobileUserCard = () => {
     <section className="user-mobile-card-component">
       <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-mobile-card-component__avatar" />
       <div className="user-mobile-card-component__wrapper">
-        <button onClick={() => setAccessToken('')} className="user-mobile-card-component__wrapper--logout">
-          Log out
-        </button>
+        <span onClick={() => setAccessToken('')} className="user-mobile-card-component__wrapper--logout">
+          <Button customPadding={"0.8rem 1.6rem"} primary={true} label="Log out" />
+        </span>
         <div className="user-mobile-card-component__wrapper--component">
           <a href={url ? url : "#"} className="user-mobile-card-component__wrapper--component__user">
             <h3>{name ? name : "User Name"}</h3>

@@ -8,15 +8,15 @@ interface ButtonProps {
 }
 
 export const HyperLink = ({
-  primary = false,
+  primary = true,
   label,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? 'button-component--primary' : 'button-component--secondary';
+  const mode = primary ? 'hyper-link--primary' : 'hyper-link--secondary';
   return (
     <a
       type="button"
-      className={['button-component', mode].join(' ')}
+      className={`hyper-link ${mode}`}
       {...props}
     >
       {label}

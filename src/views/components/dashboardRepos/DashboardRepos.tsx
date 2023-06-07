@@ -7,6 +7,7 @@ import { SearchUserReposContext } from "../../../context/SearchUserReposContext"
 import useWindowSizeReport from "../../../hooks/useWindowSizeReport";
 import { mobileBreak } from "../../../utils/componentsConstants";
 import readmeMakeUp from "../../../utils/readmeMakeUp";
+import { HyperLink } from "../../../stories/buttons/HyperLink";
 import Loader from "../../../UI";
 import Empty from '../../../assets/png/empty-error.png'
 import './dashboardRepos.scss'
@@ -33,7 +34,7 @@ export default function DashboardRepos() {
     return (
       <section className="error-no-repos">
         <img src={Empty} alt="No search results image error" />
-        <p>No Repositories found - <a href={`${userDetails?.url}?tab=repositories`}>Add one now!</a></p>
+        <p>No Repositories found - <HyperLink href={`${userDetails?.url}?tab=repositories`} primary={false} label="Add one now!" /></p>
       </section>
     )
   }
@@ -52,16 +53,15 @@ export default function DashboardRepos() {
       {userRepos &&
         searchReposResult?.map((repo: any) => {
           const { id, url } = repo;
-
           return (
             <article key={id} className="user-repos-component__article">
               <UserRepo repo={repo}>
                 <div className="user-repos-component-body">
                   <ReactMarkdown children={readmeMakeUp(repo)} disallowedElements={["img", "code"]} />
                   {readmeMakeUp(repo).length > 120 &&
-                    <a href={url} className="user-repos-component-body--more">
-                      Show repository
-                    </a>
+                    <span className="user-repos-component-body__more">
+                      <HyperLink href={url} primary={false} label="Show repository" />
+                    </span>
                   }
                 </div>
               </UserRepo>
@@ -88,9 +88,7 @@ const UserRepo = ({ repo, children }: any) => {
             {readmeMakeUp(repo).length > 120 ?
               <h4>{name}</h4>
               :
-              <a href={url} className="user-repos-desktop-wrapper__head--name">
-                <h4>{name}</h4>
-              </a>
+              <h4><HyperLink href={url} primary={false} label={name} /></h4>
             }
             <p>{moment(createdAt, "YYYYMMDD").fromNow()}</p>
           </div>

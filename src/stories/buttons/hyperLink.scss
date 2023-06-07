@@ -1,0 +1,28 @@
+@import '../../sass/';
+
+.hyper-link {
+  color: $color-main-hover;
+  text-decoration: none;
+  background: none;
+  transition: color 0.4s;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+.hyper-link--primary {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0.9rem 0;
+  margin-bottom: 1.2rem;
+  border: 0;
+}
+
+.hyper-link--secondary {
+  &:hover {
+    text-decoration: underline;
+  }
+}

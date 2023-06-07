@@ -7,6 +7,9 @@ const meta = {
   title: 'Component/Button',
   component: Button,
   tags: ['autodocs'],
+  argTypes: {
+    customPadding: { control: 'size' },
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;

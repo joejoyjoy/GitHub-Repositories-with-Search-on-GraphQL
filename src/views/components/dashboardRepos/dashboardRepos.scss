@@ -56,14 +56,6 @@
       font-weight: 300;
       margin: 0;
     }
-
-    &--name {
-      text-decoration: none;
-
-      h4 {
-        @include hyperLink();
-      }
-    }
   }
 }
 
@@ -123,10 +115,11 @@
   overflow: hidden;
 
   a {
-    @include hyperLink();
+    color: $color-main-hover;
+    text-decoration: none;
   }
 
-  &--more {
+  &__more {
     position: absolute;
     top: 0;
     left: 0;
@@ -137,20 +130,17 @@
     align-items: end;
     padding-right: 56px;
     padding-bottom: 0.4rem;
-    color: $color-primary !important;
     font-weight: 600;
     background: #1e1a32;
     background: linear-gradient(0deg, #1e1a32 0%, #1e1a32c4 8%, rgba(0, 0, 0, 0) 30%);
-    cursor: pointer;
     transition: color 0.4s;
-
+    
     @media (max-width: $media-breakpoint-md) {
       padding-right: 0;
     }
-
-    &:hover {
-      color: $color-main !important;
-      text-decoration: underline;
+    
+    a {
+      color: $color-primary;
     }
   }
 }
@@ -161,8 +151,4 @@
   justify-content: center;
   align-items: center;
   padding-top: 2rem;
-
-  a {
-    @include hyperLink();
-  }
 }
