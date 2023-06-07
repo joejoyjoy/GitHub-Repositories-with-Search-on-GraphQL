@@ -24,7 +24,7 @@ export default function UserAccessTokenProvider({ children }: UserAccessTokenPro
   useEffect(() => {
     localStorage.setItem("accessToken", accessToken);
 
-    if (accessToken === "") {
+    if (accessToken === "" || accessToken == undefined) {
       localStorage.removeItem("accessToken");
     }
   }, [accessToken])
