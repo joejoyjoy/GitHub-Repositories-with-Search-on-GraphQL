@@ -5,7 +5,7 @@ import { getAccessToken } from "../api/siteApiCalls";
 
 export const LoginRoute = () => {
   const navigate = useNavigate();
-  const { accessToken, setAccessToken } = useContext(UserAccessTokenContext)
+  const { accessToken, setAccessToken, setIsLoading } = useContext(UserAccessTokenContext)
 
   useEffect(() => {
     /**
@@ -24,10 +24,10 @@ export const LoginRoute = () => {
     if (codeParam) {
       const callAccessTokenApi = async () => {
         /** Making fetch call on getAccessToken and storing in useContext */
+        setIsLoading(true)
         const request = await getAccessToken(codeParam)
-        await console.log(request);
+        setIsLoading(false)
         setAccessToken(request);
-        console.log(request);
         navigate("./dashboard")
       }
       callAccessTokenApi();

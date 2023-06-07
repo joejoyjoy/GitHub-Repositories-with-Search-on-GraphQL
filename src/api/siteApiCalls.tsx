@@ -1,12 +1,10 @@
 export async function getAccessToken(codeParam: string) {
   const { VITE_SERVER_URL } = import.meta.env;
-  console.log(codeParam);
 
   try {
     const response = await fetch(`${VITE_SERVER_URL}/v1/get-access-token?code=${codeParam}`);
     const data = await response.json();
-    console.log(data);
-    
+
     if (data.access_token) {
       return data.access_token;
     }
