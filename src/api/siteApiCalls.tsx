@@ -38,7 +38,12 @@ export async function getUserDetails(accessToken: string) {
     });
 
     const data = await response.json();
-    return data?.data.viewer;
+
+    if (data?.message) {
+      return data?.message;
+    }
+
+    return data.data?.viewer;
 
   } catch (err) {
     console.error(err);

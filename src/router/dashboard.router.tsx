@@ -6,7 +6,7 @@ import { UserDetailsContext } from "../context/UserDetailsContext";
 import { getUserDetails, getUserGithubRepos } from "../api/siteApiCalls";
 
 export const DashboardRoute = () => {
-  const { accessToken } = useContext(UserAccessTokenContext)
+  const { accessToken, setAccessToken } = useContext(UserAccessTokenContext)
   const { setUserRepos, setIsLoading } = useContext(UserReposDataContext)
   const { userDetails, setUserDetails } = useContext(UserDetailsContext)
 
@@ -19,6 +19,7 @@ export const DashboardRoute = () => {
     
     const callUserDetailsApi = async () => {
       const request = await getUserDetails(accessToken)
+      if (request === "Bad credentials") setAccessToken('')
       setUserDetails(request)
     }
     callUserDetailsApi();
