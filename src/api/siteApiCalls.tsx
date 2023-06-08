@@ -1,3 +1,16 @@
+export async function getBackendStatus() {
+  const { VITE_SERVER_URL } = import.meta.env;
+
+  try {
+    const response = await fetch(`${VITE_SERVER_URL}/v1/get-backend-status`);
+    const data = await response.json();
+    return data;
+
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 export async function getAccessToken(codeParam: string) {
   const { VITE_SERVER_URL } = import.meta.env;
 

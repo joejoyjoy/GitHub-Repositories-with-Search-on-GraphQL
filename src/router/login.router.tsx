@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Navigate, Outlet, useNavigate } from 'react-router';
 import { UserAccessTokenContext } from "../context/UserAccessTokenContext";
-import { getAccessToken } from "../api/siteApiCalls";
+import { getBackendStatus, getAccessToken } from "../api/siteApiCalls";
 
 export const LoginRoute = () => {
   const navigate = useNavigate();
@@ -15,6 +15,12 @@ export const LoginRoute = () => {
     * Storing server answerer into accessToken useContext,
     * and redirect to dashboard page
     */
+
+    /**
+    * Waking up backend server if spin down happens 
+    * which does after 15 minutes of inactivity
+    */
+    getBackendStatus()
 
     /** Retrieving OAuth result */
     const queryString = window.location.search;
