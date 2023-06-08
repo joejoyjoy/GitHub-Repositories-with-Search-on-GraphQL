@@ -1,5 +1,6 @@
 import BackgroundImage from '../../../../assets/webp/background-login.webp'
 import './loginDComponents.scss'
+import { Button } from '../../../../stories/buttons/Button';
 
 const LoginDComponents = () => {
   const { VITE_CLIENT_ID } = import.meta.env;
@@ -17,8 +18,8 @@ const LoginDComponents = () => {
           <p>Get the most out of you GitHub account! <br />We provide you with the best tools to get into your code faster</p>
         </div>
         <div className="login-desktop-component__container--buttons" data-test="login-form">
-          <button onClick={loginWithGithub} data-test="login-button" className="login-desktop-component__container--buttons__login">Login with GitHub</button>
-          <a href='https://github.com/join' data-test="sign-button" className="login-desktop-component__container--buttons__sign-up">Sign Up to GitHub</a>
+          <Button onClick={loginWithGithub} primary={true} data-test="login-button" label={"Login with GitHub"} />
+          <Button href='https://github.com/join' data-test="sign-button" label={"Sign Up to GitHub"} />
         </div>
       </section>
       <section className="login-desktop-component__wrapper">

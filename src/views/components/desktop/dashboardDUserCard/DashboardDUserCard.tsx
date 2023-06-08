@@ -2,17 +2,18 @@ import { useContext } from "react";
 import { UserAccessTokenContext } from "../../../../context/UserAccessTokenContext";
 import { UserDetailsContext } from "../../../../context/UserDetailsContext";
 import nFormatter from "../../../../utils/nFormatter";
+import { HyperLink } from "../../../../stories/buttons/HyperLink";
 import ProfilePlaceholder from '../../../../assets/webp/profile-placeholder-160x160.webp'
 import './dashboardDUserCard.scss'
 
 const DashboardDesktopUserCard = () => {
   const { setAccessToken } = useContext(UserAccessTokenContext)
   const { userDetails } = useContext(UserDetailsContext)
-  const { avatarUrl, name, login, url, issues, followers, following} = userDetails
+  const { avatarUrl, name, login, url, issues, followers, following } = userDetails
 
   return (
     <section className="user-desktop-card-component">
-      <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-desktop-card-component__avatar"/>
+      <img src={avatarUrl ? avatarUrl : ProfilePlaceholder} alt="Profile Placeholder" className="user-desktop-card-component__avatar" />
       <div className="user-desktop-card-component__wrapper">
         <div className="user-desktop-card-component__wrapper--component">
           <a href={url ? url : "#"} className="user-desktop-card-component__wrapper--component__user">
@@ -36,10 +37,8 @@ const DashboardDesktopUserCard = () => {
             </div>
           </div>
         </div>
-        <hr className="user-desktop-card-component__wrapper--hr"/>
-        <button onClick={() => setAccessToken('')} className="user-desktop-card-component__wrapper--logout">
-          Log out
-        </button>
+        <hr className="user-desktop-card-component__wrapper--hr" />
+        <HyperLink onClick={() => setAccessToken('')} label="Log out" />
       </div>
     </section>
   )

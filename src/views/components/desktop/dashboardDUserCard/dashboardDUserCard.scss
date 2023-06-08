@@ -86,9 +86,5 @@
       margin: 0;
       border: $hr-config;
     }
-
-    &--logout {
-      @include simpleButton();
-    }
   }
 }

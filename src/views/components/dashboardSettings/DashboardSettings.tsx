@@ -5,7 +5,7 @@ import { UserDetailsContext } from "../../../context/UserDetailsContext";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
 import { getUserGithubRepos } from "../../../api/siteApiCalls";
 import nFormatter from "../../../utils/nFormatter";
-import { BsTriangleFill } from 'react-icons/bs'
+import { ButtonSvg } from "../../../stories/buttons/ButtonWithSvg";
 import './dashboardSettings.scss'
 
 const DashboardSettings = () => {
@@ -101,18 +101,9 @@ const DashboardSettings = () => {
     <section className="settings-component">
       <span className="settings-component__results">{searchReposResult?.length ? nFormatter(searchReposResult.length) : "NONE"} REPOS</span>
       <div className="settings-component__settings">
-        <span onClick={handleNameSort} className={`settings-component__settings--wrapper${current === "NAME" ? " active" : ""}`}>
-          <BsTriangleFill className={current === "NAME" && direction === "DESC" ? " selected" : ""} />
-          <p>Name</p>
-        </span>
-        <span onClick={handleModifiedSort} className={`settings-component__settings--wrapper${current === "UPDATED_AT" ? " active" : ""}`}>
-          <BsTriangleFill className={current === "UPDATED_AT" && direction === "DESC" ? " selected" : ""} />
-          <p>Modified</p>
-        </span>
-        <span onClick={handleCreatedAt} className={`settings-component__settings--wrapper${current === "CREATED_AT" ? " active" : ""}`}>
-          <BsTriangleFill className={current === "CREATED_AT" && direction === "DESC" ? " selected" : ""} />
-          <p>Created At</p>
-        </span>
+        <ButtonSvg onClick={handleNameSort} active={current === "NAME" ? true : false} selected={current === "NAME" && direction === "DESC" ? true : false} label={"Name"} />
+        <ButtonSvg onClick={handleModifiedSort} active={current === "UPDATED_AT" ? true : false} selected={current === "UPDATED_AT" && direction === "DESC" ? true : false} label={"Modified"} />
+        <ButtonSvg onClick={handleCreatedAt} active={current === "CREATED_AT" ? true : false} selected={current === "CREATED_AT" && direction === "DESC" ? true : false} label={"Created"} />
       </div>
     </section>
   )

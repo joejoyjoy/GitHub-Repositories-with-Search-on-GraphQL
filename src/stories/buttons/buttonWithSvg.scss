@@ -1,0 +1,63 @@
+@import '../../sass/';
+
+.button-svg-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: background-color 0.4s;
+  cursor: pointer;
+
+  @media (max-width: 450px) {
+    width: inherit;
+  }
+
+  svg {
+    color: $color-primary;
+    width: 0.7rem;
+    height: 0.7rem;
+    transform: rotate(180deg);
+    transition: transform 0.4s;
+
+    @media (max-width: $media-breakpoint-xs) {
+      display: none;
+    }
+  }
+
+  p {
+    color: $color-primary;
+    margin: 0;
+    text-align: center;
+    word-break: break-word;
+
+    @media (max-width: $media-breakpoint-sm) {
+      font-size: 12px;
+    }
+  }
+
+  .selected {
+    transform: rotate(0deg);
+  }
+}
+
+.button-svg-component--active {
+  background-color: $color-main;
+
+  &:hover {
+    background-color: $color-main-hover;
+  }
+}
+
+.button-svg-component--inActive {
+  background: none;
+
+  @media (max-width: $media-breakpoint-desktop-mobile) {
+    background-color: $background-color-main;
+  }
+
+  &:hover {
+    background-color: $color-main-hover;
+  }
+}

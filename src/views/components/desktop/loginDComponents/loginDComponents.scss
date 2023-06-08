@@ -32,14 +32,6 @@
       width: -webkit-fill-available;
       max-width: 220px;
       margin: 2rem;
-      
-      &__login {
-        @include buttonWithText($color-main, $color-main-hover);
-      }
-
-      &__sign-up {
-        @include buttonWithText($background-color-main, $background-color-main-hover);
-      }
     }
   }
 
