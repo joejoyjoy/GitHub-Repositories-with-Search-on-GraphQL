@@ -1,25 +1,13 @@
 import { useContext } from "react";
 import { SearchUserReposContext } from "../../../context/SearchUserReposContext";
-import { CiSearch } from 'react-icons/ci';
-import './dashboardSearch.scss'
+import { SearchBar } from "../../../stories/searchBar/searchBar";
 
 const DashboardSearch = () => {
   /** Search with a useContext global keyword */
   const { keyword, handleSearch } = useContext(SearchUserReposContext)
 
   return (
-    <section className="search-component">
-      <div className="search-component__icon">
-        <CiSearch />
-      </div>
-      <input
-        type="text"
-        value={keyword}
-        onChange={handleSearch}
-        placeholder="Search..."
-        className="search-component__search"
-      />
-    </section>
+    <SearchBar value={keyword} onChange={handleSearch} />
   )
 }
 
